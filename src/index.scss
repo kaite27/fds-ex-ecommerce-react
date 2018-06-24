@@ -283,17 +283,16 @@ section {
 
 /* ---------- navigation setting ----------- */
 
-.navbar li a:link,
-.navbar li a:visited {
-  padding: 8px 0;
+.navbar .nav-item a:link,
+.navbar .nav-item a:visited {
   text-transform: uppercase;
   font-size: 100%;
   border-bottom: 1px solid transparent;
   transition: border-bottom 0.2s;
 }
 
-.navbar li a:hover,
-.navbar li a:active {
+.navbar .nav-item a:hover,
+.navbar .nav-item a:active {
   border-bottom: 1px solid $color-green;
 }
 
@@ -307,17 +306,28 @@ section {
     bottom: 0;
     width: 100%;
   }
-  &-item:nth-child(2n) {
-    width: 125px;
-  }
-  &-tabs {
-    margin-left: 30px;
+  &-item:nth-child(2) {
+    width: 140px;
   }
 }
 
 // navigation dropdown button 
 .dropdown-menu {
   left: auto;
+  padding: 0;
+  box-shadow: 0 0 0;
+  width: 150px !important;
+  font-size: 16px;
+  color: #fff;
+  margin: 10px 0 0 160px;
+}
+
+.dropdown-item {
+  padding: 6px 10px;
+}
+
+.dropdown-toggle {
+  padding: 10px !important;
 }
 
 // navigation dropdown button - login 
@@ -335,9 +345,9 @@ section {
   }
 }
 
-.username-box {
+.username-box a {
   min-width: 200px;
-  color: $color-green;
+  color: $color-green !important;
 }
 
 /* ---------- cart setting ----------- */
@@ -345,8 +355,7 @@ section {
 .cart-icon {
   position: relative;
   &__i {
-    font-size: 1.8rem;
-    margin-left: 15px;
+    font-size: 2rem;
   }
 }
 
