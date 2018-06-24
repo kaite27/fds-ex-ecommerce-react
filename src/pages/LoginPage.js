@@ -4,6 +4,10 @@ import LoginFormCT from '../containers/LoginFormCT';
 
 export default class LoginPage extends Component {
   render() {
-    return <LoginFormCT />;
+    return (
+      <React.Fragment>
+        <LoginFormCT />
+      </React.Fragment>
+    );
   }
 }
