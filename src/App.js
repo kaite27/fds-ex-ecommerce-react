@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 
 import LoginPage from './pages/LoginPage';
+import MainPage from './pages/MainPage';
 
 export default class App extends Component {
   render() {
     return (
-      <React.Fragment>
-        <div>TEST!Push</div>
-        <div>TEST!Pus2222222h</div>
-        <LoginPage />
-      </React.Fragment>
+      <BrowserRouter>
+        <React.Fragment>
+          <Switch>
+            <LoginPage path="/login" component={LoginPage} />
+            <Route exact path="/" component={MainPage} />
+          </Switch>
+        </React.Fragment>
+      </BrowserRouter>
     );
   }
 }
