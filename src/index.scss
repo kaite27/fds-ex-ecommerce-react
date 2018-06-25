@@ -515,7 +515,7 @@ section {
 
 .subscribes {
   color: #fff;
-  ;
+  padding-top: 50px;
   background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)), url("https://image.freepik.com/free-photo/coffee-and-technologies-composition_23-2147772389.jpg");
   background-repeat: no-repeat;
   background-size: 100%;
@@ -523,8 +523,8 @@ section {
   button {
     font-size: 1.2rem;
   }
-  input {
-    width: 30%;
+  &-form__input {
+    width: 250px !important;
     vertical-align: bottom;
     margin-right: 10px;
   }
