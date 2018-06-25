@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 
 export default function NavBar({
-  username = null, // 표시할 사용자 이름
+  username = localStorage.getItem('username'),
   onLogout = () => {}, // 로그아웃 버튼 클릭 시 호출할 함수
 }) {
   return (
@@ -27,7 +27,9 @@ export default function NavBar({
           <NavItem className="nav-item" eventKey={4} href="#">
             Contact us
           </NavItem>
-          <NavItem className="username-box">Hi there!</NavItem>
+          <NavItem className="username-box">
+            {username ? `Welcome ${username} !` : 'Hi there!'}
+          </NavItem>
           <NavDropdown
             eventKey={3}
             title="Accounts"
