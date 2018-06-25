@@ -22,13 +22,17 @@ export default function Subscribes() {
         <div className="subscribes-form field">
           <SubscribesProvider>
             <SubscribesConsumer>
-              {({ sendEmail }) => (
-                <SubscribesForm
-                  onSubscribe={async email => {
-                    await sendEmail(email);
-                  }}
-                />
-              )}
+              {({ loading, sendEmail }) =>
+                loading ? (
+                  <div>posting..</div> // required css!!
+                ) : (
+                  <SubscribesForm
+                    onSubscribe={async email => {
+                      await sendEmail(email);
+                    }}
+                  />
+                )
+              }
             </SubscribesConsumer>
           </SubscribesProvider>
         </div>
