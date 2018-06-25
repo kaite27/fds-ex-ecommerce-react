@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import NewProductItem from './NewProductItem';
 
 export default function NewProductList({ products = [] } = {}) {

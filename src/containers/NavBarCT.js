@@ -1,8 +1,6 @@
 import React from 'react';
 
-import { LoginConsumer } from '../contexts/LoginContext';
 import NavBar from '../components/NavBar';
-import { Link, Redirect } from 'react-router-dom';
 
 export default class NavBarCT extends React.Component {
   state = {

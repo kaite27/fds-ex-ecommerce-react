@@ -1,12 +1,5 @@
 import React, { Component } from 'react';
-import {
-  Button,
-  Form,
-  FormGroup,
-  FormControl,
-  ControlLabel,
-  InputGroup,
-} from 'react-bootstrap';
+import { Button, Form, FormGroup, FormControl } from 'react-bootstrap';
 
 export default class SubscribesForm extends Component {
   emailRef = React.createRef();
@@ -21,17 +14,13 @@ export default class SubscribesForm extends Component {
     return (
       <Form inline onSubmit={this.handleSubmit}>
         <FormGroup controlId="formInlineEmail">
-          <FormControl ref={this.emailRef} />
-          <InputGroup>
-            <InputGroup.Addon>
-              <input
-                className="subscribes-form__input"
-                ref={this.emailRef}
-                type="email"
-                placeholder="Your email.."
-              />
-            </InputGroup.Addon>
-          </InputGroup>
+          <FormControl
+            componentClass="input"
+            inputRef={this.emailRef}
+            className="subscribes-form__input"
+            type="email"
+            placeholder="Your email.."
+          />
         </FormGroup>{' '}
         <Button type="submit" bsStyle="primary">
           Send

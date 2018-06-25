@@ -1,14 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import {
-  Navbar,
-  Header,
-  Brand,
-  Nav,
-  NavItem,
-  NavDropdown,
-  MenuItem,
-} from 'react-bootstrap';
+import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 
 export default function NavBar({
   username = null, // 표시할 사용자 이름

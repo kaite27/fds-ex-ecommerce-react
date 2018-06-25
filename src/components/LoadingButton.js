@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
 
-export default class LoadingButton extends React.Component {
+export default class LoadingButton extends Component {
   constructor(props, context) {
     super(props, context);
 
@@ -26,6 +26,7 @@ export default class LoadingButton extends React.Component {
 
     return (
       <Button
+        type="submit"
         bsStyle="primary"
         disabled={isLoading}
         onClick={!isLoading ? this.handleClick : null}
