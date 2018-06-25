@@ -13,6 +13,10 @@ class LoginProvider extends Component {
       const res = await mallAPI.post('/users/login', payload);
 
       localStorage.setItem('token', res.data.token);
+      localStorage.setItem('username', username);
+
+      const UserRes = await mallAPI.get('/me');
+      localStorage.setItem('userId', UserRes.data.id);
     } catch (e) {
       if (e.response && e.response.status === 400) {
         alert('Wrong ID or Password!');
