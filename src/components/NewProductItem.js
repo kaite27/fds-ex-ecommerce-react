@@ -2,26 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 export default function NewProductItem({
-  id,
-  title,
-  unitPrice,
-  marketPrice,
-  imageURL,
+  id, // product's id on json server
+  title, // product title
+  unitPrice, // product unitprice will be underlined
+  marketPrice, // product salse price
+  imageURL, // main photo of a product
 }) {
   return (
     <React.Fragment>
-      <div className="full-box offScreen">
-        <div className="lds-roller">
-          <div />
-          <div />
-          <div />
-          <div />
-          <div />
-          <div />
-          <div />
-          <div />
-        </div>
-      </div>
       <div className="new-products-items card">
         <div className="new-products-img">
           <img
