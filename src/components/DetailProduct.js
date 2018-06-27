@@ -1,78 +1,56 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
 
-export default function DetailProduct() {
+import DetailProductBreadcrumb from './DetailProductBreadcrumb';
+
+export default function DetailProduct({ productTitle = '' }) {
   return (
     <React.Fragment>
-      <div className="rows">
-        <nav className="breadcrumb" aria-label="breadcrumbs">
-          <ul>
-            <li className="breadcrumb-home">
-              <Link to="#">Home</Link>
-            </li>
-            <li className="breadcrumb-product">
-              <Link to="#">Products</Link>
-            </li>
-            <li className="breadcrumb-category">
-              <Link to="#" className="breadcrumb-cat">
-                category
-              </Link>
-            </li>
-            <li className="is-active breadcrumb-sku">
-              <Link to="#" aria-current="page" className="breadcrumb-sku-a">
-                productSKU
-              </Link>
-            </li>
-          </ul>
-        </nav>
-      </div>
+      <DetailProductBreadcrumb />
       <div className="rows">
         <div className="columns">
           <div className="column is-one-third">
             <div className="img-box-big">
               <img
                 className="product-page__img--main-big"
-                src="images/slide-1.jpg"
-                alt="Detail"
+                src=""
+                alt={productTitle}
               />
               <div className="img-container">
                 <img
                   className="img-container__list img-list-1"
                   src="https://image.freepik.com/free-photo/flowers-near-hat-and-dress_23-2147801034.jpg"
-                  alt="Detail"
+                  alt={productTitle}
                 />
                 <img
                   className="img-container__list img-list-2"
                   src="https://image.freepik.com/free-photo/stunning-lady-in-pink-dress-poses-in-rays-of-morning-sun-on-the_1304-4767.jpg"
-                  alt="Detail"
+                  alt={productTitle}
                 />
                 <img
                   className="img-container__list img-list-3"
                   src="https://image.freepik.com/free-photo/bride-dancing-in-front-of-building_1304-4133.jpg"
-                  alt="Detail"
+                  alt={productTitle}
                 />
               </div>
             </div>
           </div>
           <div className="column">
             <div className="product-info-box">
-              <p className="product-detail-page__sku">SKU 242423243</p>
-              <p className="product-detail-page__title">Title</p>
-              <p className="product-detail-page__desc">desc</p>
+              <p className="product-detail-page__sku">SKU 000000</p>
+              <p className="product-detail-page__title">{productTitle}</p>
+              <p className="product-detail-page__desc">productproductProduct</p>
               <form method="POST">
                 <div className="field">
                   <div className="control">
                     <span className="list-group-item__variants">Colors :</span>
                     <div className="select is-success">
-                      {/* <!-- 삽입! --> */}
                       <select
                         className="option-list attribute-list-color"
                         name="color"
                         id="color"
                       >
-                        TEST SELCT
+                        {/* <!-- 삽입! --> */}
                       </select>
-                      {/* <!-- 삽입! --> */}
                     </div>
                   </div>
                 </div>
@@ -80,13 +58,13 @@ export default function DetailProduct() {
                   <div className="control">
                     <span className="list-group-item__variants">Size :</span>
                     <div className="select is-success">
-                      {/* <!-- 삽입! --> */}
                       <select
                         className="option-list attribute-list-size"
                         name="size"
                         id="size"
-                      />
-                      {/* <!-- 삽입! --> */}
+                      >
+                        {/* <!-- 삽입! --> */}
+                      </select>
                     </div>
                   </div>
                 </div>
@@ -123,7 +101,7 @@ export default function DetailProduct() {
                   </div>
                   <div className="price-tax">
                     <span className="price-tab price-tax__text">
-                      Salse Tax <span>(6.875%)</span>
+                      Salse Tax <span>(6.625%)</span>
                     </span>
                     $<span className="price-tab price-tax__value" />
                   </div>
