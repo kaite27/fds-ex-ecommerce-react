@@ -11,8 +11,8 @@ export default class App extends Component {
       <BrowserRouter>
         <React.Fragment>
           <Switch>
-            <LoginPage path="/login" component={LoginPage} />
-            <DetailPage path="/detail" component={DetailPage} />
+            <Route path="/login" component={LoginPage} />
+            <Route path="/detail/:id" component={DetailPage} />
             <Route exact path="/" component={MainPage} />
           </Switch>
         </React.Fragment>
