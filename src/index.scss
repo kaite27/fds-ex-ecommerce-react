@@ -653,6 +653,21 @@ section {
       font-size: 2.2rem;
       margin: 7px 0;
     }
+    &__uprice:before,
+    &__mprice:before {
+      content: '$';
+    }
+    &__uprice {
+      font-size: 1.8rem;
+      margin-right: 20px;
+      color: $color-grey;
+      text-decoration: line-through;
+    }
+    &__mprice {
+      font-size: 2.5rem;
+      color: $color-green;
+      font-weight: 600;
+    }
   }
 }
 
