@@ -2,17 +2,31 @@ import React from 'react';
 
 import DetailProductBreadcrumb from './DetailProductBreadcrumb';
 
-export default function DetailProduct({ productTitle = '' }) {
+export default function DetailProduct({
+  colors = [],
+  sizes = [],
+  productId,
+  productTitle = '',
+  productDesc,
+  imageURL,
+  category,
+  color,
+  size,
+  quantity,
+  attrSKU,
+  productMarketPrice,
+  productUnitPrice,
+}) {
   return (
     <React.Fragment>
-      <DetailProductBreadcrumb />
+      <DetailProductBreadcrumb productId={productId} category={category} />
       <div className="rows">
         <div className="columns">
           <div className="column is-one-third">
             <div className="img-box-big">
               <img
                 className="product-page__img--main-big"
-                src=""
+                src={imageURL}
                 alt={productTitle}
               />
               <div className="img-container">
@@ -36,9 +50,15 @@ export default function DetailProduct({ productTitle = '' }) {
           </div>
           <div className="column">
             <div className="product-info-box">
-              <p className="product-detail-page__sku">SKU 000000</p>
+              <p className="product-detail-page__sku">{attrSKU}</p>
               <p className="product-detail-page__title">{productTitle}</p>
-              <p className="product-detail-page__desc">productproductProduct</p>
+              <p className="product-detail-page__desc">{productDesc}</p>
+              <span className="product-detail-page__uprice">
+                {productUnitPrice}
+              </span>
+              <span className="product-detail-page__mprice">
+                {productMarketPrice}
+              </span>
               <form method="POST">
                 <div className="field">
                   <div className="control">
@@ -50,6 +70,12 @@ export default function DetailProduct({ productTitle = '' }) {
                         id="color"
                       >
                         {/* <!-- 삽입! --> */}
+                        <option defaultValue value={color}>
+                          {color}
+                        </option>
+                        {colors.map(item => (
+                          <option value={item}>{item}</option>
+                        ))}
                       </select>
                     </div>
                   </div>
@@ -64,6 +90,12 @@ export default function DetailProduct({ productTitle = '' }) {
                         id="size"
                       >
                         {/* <!-- 삽입! --> */}
+                        <option defaultValue value={size}>
+                          {size}
+                        </option>
+                        {sizes.map(item => (
+                          <option value={item}>{item}</option>
+                        ))}
                       </select>
                     </div>
                   </div>
@@ -79,6 +111,7 @@ export default function DetailProduct({ productTitle = '' }) {
                         name="quantity"
                         className="input option-quantity"
                         min="1"
+                        max={quantity}
                         value="1"
                         data-toggle="tooltip"
                         title="No more!"
@@ -86,8 +119,10 @@ export default function DetailProduct({ productTitle = '' }) {
                     </div>
                     <span className="option-quantity-remain-box">
                       {' '}
-                      <span className="option-quantity-remain">10</span> item(s)
-                      left
+                      <span className="option-quantity-remain">
+                        {quantity}
+                      </span>{' '}
+                      item(s) left
                     </span>
                   </div>
                 </div>

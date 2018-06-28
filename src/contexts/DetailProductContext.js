@@ -10,10 +10,19 @@ class DetailProductProvider extends React.Component {
   // };
 
   state = {
-    // colors: [],
-    // sizes: [],
-    // product: [],
+    colors: [],
+    sizes: [],
+    productId: '',
     productTitle: '',
+    productDesc: '',
+    imageURL: '',
+    category: '',
+    color: '',
+    size: 0,
+    quantity: 0,
+    attrSKU: '',
+    productMarketPrice: 0,
+    productUnitPrice: 0,
     // avgRate: '',
     // cntRates: 0,
     loading: false,
@@ -21,29 +30,45 @@ class DetailProductProvider extends React.Component {
 
   // reviews = [];
   async componentDidMount() {
-    // const { id } = this.props;
+    const { id } = this.props;
     this.setState({ loading: true });
     try {
       const res = await mallAPI.get(
-        `/attributes?productId=2&defaultAttr=true&_expand=product`
+        `/attributes?productId=${id}&defaultAttr=true&_expand=product`
       );
-      // const reviewRes = await mallAPI.get('/reviews?productId=2');
-      const attrRes = await mallAPI.get(`/attributes?productId=2`);
+      // const reviewRes = await mallAPI.get('/reviews?productId=${id}');
+      const attrRes = await mallAPI.get(`/attributes?productId=${id}`);
+
+      const color = res.data.map(p => p.color).toString();
+      const size = parseInt(res.data.map(p => p.size).toString(), 10);
+
+      // 중복 제거
+      const avoidColor = attrRes.data
+        .map(p => p.color)
+        .filter(function(item, i, arr) {
+          return i === arr.indexOf(item);
+        });
+
+      const avoidSize = attrRes.data
+        .map(p => p.size)
+        .filter(function(item, i, arr) {
+          return i === arr.indexOf(item);
+        });
+
       this.setState({
-        productTitle: res.data.productTitle,
-        // colors: attrRes.data.map(p => p.color),
-        // sizes: attrRes.data.map(p => p.size),
-        // product: res.data.map(p => ({
-        // productTitle: p.productTitle,
-        // productDesc: p.productDesc,
-        // imageURL: p.imageURL,
-        // category: p.category,
-        // color: p.color,
-        // size: p.size,
-        // quantity: p.quantity,
-        // attrSKU: p.attrSKU,
-        // productMarketPrice: p.productMarketPrice,
-        // productUnitPrice: p.productUnitPrice,
+        colors: avoidColor.filter(value => value !== color),
+        sizes: avoidSize.filter(value => value !== size),
+        productId: res.data.map(p => p.productId),
+        productTitle: res.data.map(p => p.product.productTitle),
+        productDesc: res.data.map(p => p.product.productDesc),
+        imageURL: res.data.map(p => p.product.imageURL),
+        category: res.data.map(p => p.product.category),
+        color: res.data.map(p => p.color),
+        size: res.data.map(p => p.size),
+        quantity: res.data.map(p => p.quantity),
+        attrSKU: res.data.map(p => p.attrSKU),
+        productMarketPrice: res.data.map(p => p.productMarketPrice),
+        productUnitPrice: res.data.map(p => p.productUnitPrice),
       });
     } finally {
       this.setState({ loading: false });
@@ -52,7 +77,7 @@ class DetailProductProvider extends React.Component {
 
   render() {
     const value = {
-      productTitle: this.state.productTitle,
+      ...this.state,
     };
     return <Provider value={value}>{this.props.children}</Provider>;
   }
