@@ -5,10 +5,11 @@ import DetailProductCT from '../containers/DetailProductCT';
 
 export default class DetailPage extends Component {
   render() {
+    const { match } = this.props;
     return (
       <React.Fragment>
         <NavBarCT />
-        <DetailProductCT />
+        <DetailProductCT id={match.params.id} />
       </React.Fragment>
     );
   }
