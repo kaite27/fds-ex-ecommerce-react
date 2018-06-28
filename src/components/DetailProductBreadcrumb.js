@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default function DetailProductBreadcrumb() {
+export default function DetailProductBreadcrumb({ category, productId }) {
   return (
     <React.Fragment>
       <div className="rows">
@@ -14,10 +14,10 @@ export default function DetailProductBreadcrumb() {
               <Link to="#">Products</Link>
             </li>
             <li className="breadcrumb-category">
-              <Link to="#">category</Link>
+              <Link to="#">{category}</Link>
             </li>
             <li className="is-active breadcrumb-sku">
-              <Link to="#">productSKU</Link>
+              <Link to="#">{productId}</Link>
             </li>
           </ul>
         </nav>
