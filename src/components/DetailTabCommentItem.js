@@ -10,20 +10,20 @@ export default function DetailTabCommentItem({
   userId, // userId who left a comment
 }) {
   return (
-    <div class="review-list-box">
-      <div class="review-date-box">
-        <span class="review-date">Sun 2018 06 04</span>
+    <div className="review-list-box">
+      <div className="review-date-box">
+        <span className="review-date">Sun 2018 06 04</span>
       </div>
-      <div class="review-reviewer-box">
-        <span class="review-viewer">KATE</span>
+      <div className="review-reviewer-box">
+        <span className="review-viewer">KATE</span>
       </div>
-      <div class="review-rate-box">
-        <span class="review-rate">4</span>
+      <div className="review-rate-box">
+        <span className="review-rate">4</span>
       </div>
-      <div class="review-body-box">
-        <span class="review-body">THIS IS REVIEW</span>
+      <div className="review-body-box">
+        <span className="review-body">THIS IS REVIEW</span>
       </div>
-      <div class="review-btn-box">
+      <div className="review-btn-box">
         <Button type="submit" bsStyle="primary">
           DELETE
         </Button>
