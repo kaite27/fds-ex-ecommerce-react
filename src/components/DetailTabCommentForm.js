@@ -2,13 +2,10 @@ import React, { Component } from 'react';
 import { Button, Form, FormGroup, FormControl } from 'react-bootstrap';
 
 export default class DetailTab extends Component {
-  commentRef = React.createRef();
-  ratingRef = React.createRef();
-
   handleSubmit = e => {
     e.preventDefault();
     const { onComment } = this.props;
-    onComment(this.ratingRef.current.value, this.commentRef.current.value);
+    onComment(this.ratingRef.value, this.commentRef.value);
   };
 
   render() {
@@ -20,19 +17,23 @@ export default class DetailTab extends Component {
               componentClass="select"
               placeholder="select"
               className="review-lable-rate"
-              inputRef={this.ratingRef}
+              inputRef={ref => {
+                this.ratingRef = ref;
+              }}
             >
-              <option value="*****">*****</option>
-              <option value="****">****</option>
-              <option value="***">***</option>
-              <option value="**">**</option>
-              <option value="*">*</option>
+              <option value="5">★★★★★</option>
+              <option value="4">★★★★</option>
+              <option value="3">★★★</option>
+              <option value="2">★★</option>
+              <option value="1">★</option>
             </FormControl>
           </FormGroup>
           <FormGroup controlId="formInlineComment">
             <FormControl
               componentClass="input"
-              inputRef={this.commentRef}
+              inputRef={ref => {
+                this.commentRef = ref;
+              }}
               className="review-input-comment"
               type="text"
               placeholder="Your comment.."
