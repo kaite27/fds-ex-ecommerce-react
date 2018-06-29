@@ -23,6 +23,7 @@ class DetailProductProvider extends React.Component {
     attrSKU: '',
     productMarketPrice: 0,
     productUnitPrice: 0,
+    comments: [],
     // avgRate: '',
     // cntRates: 0,
     loading: false,
@@ -36,7 +37,7 @@ class DetailProductProvider extends React.Component {
       const res = await mallAPI.get(
         `/attributes?productId=${id}&defaultAttr=true&_expand=product`
       );
-      // const reviewRes = await mallAPI.get('/reviews?productId=${id}');
+      // product attribute get 요청
       const attrRes = await mallAPI.get(`/attributes?productId=${id}`);
 
       const color = res.data.map(p => p.color).toString();
@@ -54,6 +55,8 @@ class DetailProductProvider extends React.Component {
         .filter(function(item, i, arr) {
           return i === arr.indexOf(item);
         });
+      // product comment get 요청
+      const reviewRes = await mallAPI.get(`/reviews?productId=${id}`);
 
       this.setState({
         colors: avoidColor.filter(value => value !== color),
@@ -69,7 +72,9 @@ class DetailProductProvider extends React.Component {
         attrSKU: res.data.map(p => p.attrSKU),
         productMarketPrice: res.data.map(p => p.productMarketPrice),
         productUnitPrice: res.data.map(p => p.productUnitPrice),
+        comments: reviewRes.data.map(p => p),
       });
+      console.log(this.state.comments);
     } finally {
       this.setState({ loading: false });
     }
