@@ -3,32 +3,34 @@ import React from 'react';
 import ProductCategory from './ProductCategory';
 import ProductItem from './ProductItem';
 
-export default function ProductList() {
+export default function ProductList({ products = [] } = {}) {
   return (
     <React.Fragment>
-      <section class="product-page">
-        <div class="rows">
-          <div class="columns">
-            <div class="column is-one-fifth product-category">
+      <section className="product-page">
+        <div className="rows">
+          <div className="columns">
+            <div className="column is-one-fifth product-category">
               <ProductCategory />
             </div>
-            <div class="column product-container">
-              <div class="search-control">
-                <p class="control has-icons-left">
+            <div className="column product-container">
+              <div className="search-control">
+                <p className="control has-icons-left">
                   <input
-                    class="input search-bar"
+                    className="input search-bar"
                     type="text"
                     placeholder="search"
                   />
-                  <span class="icon is-small is-left">
-                    <i class="fas fa-search" />
+                  <span className="icon is-small is-left">
+                    <i className="fas fa-search" />
                   </span>
-                  <button type="submit" class="btn btn-secondary">
+                  <button type="submit" className="btn btn-secondary">
                     Search
                   </button>
                 </p>
               </div>
-              <ProductItem />
+              {products.map(product => (
+                <ProductItem key={product.id} {...product} />
+              ))}
             </div>
           </div>
         </div>
