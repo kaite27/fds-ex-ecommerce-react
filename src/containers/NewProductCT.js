@@ -16,7 +16,7 @@ export default class NewProductCT extends React.Component {
             <NewProductList
               as={Link}
               products={products.map(p => ({
-                linkProps: { to: `/products/${p.id}` },
+                linkProps: { to: `/product/${p.id}` },
                 ...p,
               }))}
             />

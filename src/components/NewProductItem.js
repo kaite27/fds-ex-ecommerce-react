@@ -33,7 +33,7 @@ export default function NewProductItem({
           </li>
         </ul>
         <div className="new-products-items__card">
-          <Link to={`/products/${id}`} className="card-link btn btn-success">
+          <Link to={`/product/${id}`} className="card-link btn btn-success">
             View Detail
           </Link>
         </div>
