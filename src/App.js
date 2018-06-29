@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
 import MainPage from './pages/MainPage';
 import DetailPage from './pages/DetailPage';
+import ProductPage from './pages/ProductPage';
 
 export default class App extends Component {
   render() {
@@ -12,7 +13,8 @@ export default class App extends Component {
         <React.Fragment>
           <Switch>
             <Route path="/login" component={LoginPage} />
-            <Route path="/detail/:id" component={DetailPage} />
+            <Route path="/product/:id" component={DetailPage} />
+            <Route exact path="/product" component={ProductPage} />
             <Route exact path="/" component={MainPage} />
           </Switch>
         </React.Fragment>
