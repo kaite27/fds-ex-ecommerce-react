@@ -4,7 +4,7 @@ import { Tabs, Tab } from 'react-bootstrap';
 import DetailTabCommentList from './DetailTabCommentList';
 import DetailTabPolicy from './DetailTabPolicy';
 
-export default function DetailTab() {
+export default function DetailTab({ comments = [] }) {
   return (
     <React.Fragment>
       <div className="rows">
@@ -19,7 +19,7 @@ export default function DetailTab() {
               </div>
             </Tab>
             <Tab eventKey={2} title="Reviews (0)">
-              <DetailTabCommentList />
+              <DetailTabCommentList comments={comments} />
             </Tab>
             <Tab eventKey={3} title="Return Policy">
               <DetailTabPolicy />

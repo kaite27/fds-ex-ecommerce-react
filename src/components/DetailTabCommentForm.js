@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Form, FormGroup, FormControl } from 'react-bootstrap';
 
-export default class DetailTab extends Component {
+export default class DetailTabCommentForm extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const { onComment } = this.props;
@@ -21,11 +21,11 @@ export default class DetailTab extends Component {
                 this.ratingRef = ref;
               }}
             >
-              <option value="5">★★★★★</option>
-              <option value="4">★★★★</option>
-              <option value="3">★★★</option>
-              <option value="2">★★</option>
-              <option value="1">★</option>
+              <option value="★ ★ ★ ★ ★">★ ★ ★ ★ ★</option>
+              <option value="★ ★ ★ ★">★ ★ ★ ★</option>
+              <option value="★ ★ ★">★ ★ ★</option>
+              <option value="★ ★">★ ★</option>
+              <option value="★">★</option>
             </FormControl>
           </FormGroup>
           <FormGroup controlId="formInlineComment">
