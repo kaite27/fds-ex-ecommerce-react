@@ -39,9 +39,6 @@ class DetailProductProvider extends React.Component {
       // const reviewRes = await mallAPI.get('/reviews?productId=${id}');
       const attrRes = await mallAPI.get(`/attributes?productId=${id}`);
 
-      const color = res.data.map(p => p.color).toString();
-      const size = parseInt(res.data.map(p => p.size).toString(), 10);
-
       // 중복 제거
       const avoidColor = attrRes.data
         .map(p => p.color)
@@ -56,8 +53,8 @@ class DetailProductProvider extends React.Component {
         });
 
       this.setState({
-        colors: avoidColor.filter(value => value !== color),
-        sizes: avoidSize.filter(value => value !== size),
+        colors: avoidColor,
+        sizes: avoidSize.sort((prev, current) => prev - current),
         productId: res.data.map(p => p.productId),
         productTitle: res.data.map(p => p.product.productTitle),
         productDesc: res.data.map(p => p.product.productDesc),
