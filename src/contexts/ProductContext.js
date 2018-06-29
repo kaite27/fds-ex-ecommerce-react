@@ -4,69 +4,65 @@ import mallAPI from '../mallAPI';
 
 const { Provider, Consumer } = React.createContext();
 
-class DetailProductProvider extends React.Component {
-  static defaultProps = {
-    category: null,
-  };
-
+class ProductProvider extends React.Component {
   state = {
-    colors: [],
-    sizes: [],
-    productId: '',
-    productTitle: '',
-    productDesc: '',
-    imageURL: '',
-    category: '',
-    color: '',
-    size: 0,
-    quantity: 0,
-    attrSKU: '',
-    productMarketPrice: 0,
-    productUnitPrice: 0,
-    // avgRate: '',
-    // cntRates: 0,
+    products: [],
+    category: 'dress',
     loading: false,
   };
 
-  // reviews = [];
   async componentDidMount() {
-    const { id } = this.props;
     this.setState({ loading: true });
     try {
       const res = await mallAPI.get(
-        `/attributes?productId=${id}&defaultAttr=true&_expand=product`
+        `/products?_embed=attributes&_sort=id&_order=desc&category_like=${
+          this.state.category
+        }`
       );
-      // const reviewRes = await mallAPI.get('/reviews?productId=${id}');
-      const attrRes = await mallAPI.get(`/attributes?productId=${id}`);
+      const attrRes = await mallAPI.get(`/attributes`);
 
-      // 중복 제거
-      const avoidColor = attrRes.data
-        .map(p => p.color)
-        .filter(function(item, i, arr) {
-          return i === arr.indexOf(item);
-        });
-
-      const avoidSize = attrRes.data
-        .map(p => p.size)
-        .filter(function(item, i, arr) {
-          return i === arr.indexOf(item);
-        });
-
+      const arr = res.data.map(p => ({
+        id: p.id,
+        title: p.productTitle,
+        desc: p.productDesc,
+        category: p.category,
+        imageURL: p.imageURL,
+        accSoldCnt: p.accSoldCnt,
+        unitPrice: attrRes.data
+          .map(a => {
+            return a.defaultAttr === 'true' && a.productId === p.id
+              ? a.productUnitPrice
+              : null;
+          })
+          .filter(i => i !== null),
+        marketPrice: attrRes.data
+          .map(a => {
+            return a.defaultAttr === 'true' && a.productId === p.id
+              ? a.productMarketPrice
+              : null;
+          })
+          .filter(i => i !== null),
+        colors: attrRes.data
+          .map(a => {
+            return a.productId === p.id ? a.color : null;
+          })
+          .filter(i => i !== null)
+          .filter(function(item, i, arr) {
+            return i === arr.indexOf(item);
+          }),
+        sizes: attrRes.data
+          .map(a => {
+            return a.productId === p.id ? a.size : null;
+          })
+          .filter(i => i !== null)
+          .filter(function(item, i, arr) {
+            return i === arr.indexOf(item);
+          }),
+      }));
       this.setState({
-        colors: avoidColor,
-        sizes: avoidSize.sort((prev, current) => prev - current),
-        productId: res.data.map(p => p.productId),
-        productTitle: res.data.map(p => p.product.productTitle),
-        productDesc: res.data.map(p => p.product.productDesc),
-        imageURL: res.data.map(p => p.product.imageURL),
-        category: res.data.map(p => p.product.category),
-        color: res.data.map(p => p.color),
-        size: res.data.map(p => p.size),
-        quantity: res.data.map(p => p.quantity),
-        attrSKU: res.data.map(p => p.attrSKU),
-        productMarketPrice: res.data.map(p => p.productMarketPrice),
-        productUnitPrice: res.data.map(p => p.productUnitPrice),
+        products: arr,
       });
+      console.log(this.state.products);
     } finally {
       this.setState({ loading: false });
     }
@@ -80,4 +76,4 @@ class DetailProductProvider extends React.Component {
   }
 }
 
-export { DetailProductProvider, Consumer as DetailProductConsumer };
+export { ProductProvider, Consumer as ProductConsumer };
