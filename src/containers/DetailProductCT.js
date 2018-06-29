@@ -13,30 +13,24 @@ export default class DetailProductCT extends React.Component {
   render() {
     const { id } = this.props;
     return (
-      // <DetailProductProvider>
-      //   <DetailProductConsumer>
-      //     {({ productTitle }) => <DetailProduct productTitle={productTitle} />}
-      //     <DetailTabs />
-      //   </DetailProductConsumer>
-      // </DetailProductProvider>
-      <React.Fragment>
-        <DetailProductProvider id={id}>
-          <DetailProductConsumer>
-            {({
-              colors,
-              sizes,
-              productId,
-              productTitle,
-              productDesc,
-              imageURL,
-              category,
-              color,
-              size,
-              quantity,
-              attrSKU,
-              productMarketPrice,
-              productUnitPrice,
-            }) => (
+      <DetailProductProvider id={id}>
+        <DetailProductConsumer>
+          {({
+            colors,
+            sizes,
+            productId,
+            productTitle,
+            productDesc,
+            imageURL,
+            category,
+            color,
+            size,
+            quantity,
+            attrSKU,
+            productMarketPrice,
+            productUnitPrice,
+          }) => (
+            <React.Fragment>
               <DetailProduct
                 colors={colors}
                 sizes={sizes}
@@ -52,11 +46,11 @@ export default class DetailProductCT extends React.Component {
                 productMarketPrice={productMarketPrice}
                 productUnitPrice={productUnitPrice}
               />
-            )}
-          </DetailProductConsumer>
-        </DetailProductProvider>
-        <DetailTabs />
-      </React.Fragment>
+              <DetailTabs />
+            </React.Fragment>
+          )}
+        </DetailProductConsumer>
+      </DetailProductProvider>
     );
   }
 }
