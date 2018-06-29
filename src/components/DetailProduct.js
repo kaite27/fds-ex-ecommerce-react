@@ -70,12 +70,16 @@ export default function DetailProduct({
                         id="color"
                       >
                         {/* <!-- 삽입! --> */}
-                        <option defaultValue value={color}>
-                          {color}
-                        </option>
-                        {colors.map(item => (
-                          <option value={item}>{item}</option>
-                        ))}
+                        {colors.map(
+                          item =>
+                            item === color[0] ? (
+                              <option seleted={'true'} value={item}>
+                                {item}
+                              </option>
+                            ) : (
+                              <option value={item}>{item}</option>
+                            )
+                        )}
                       </select>
                     </div>
                   </div>
@@ -90,12 +94,16 @@ export default function DetailProduct({
                         id="size"
                       >
                         {/* <!-- 삽입! --> */}
-                        <option defaultValue value={size}>
-                          {size}
-                        </option>
-                        {sizes.map(item => (
-                          <option value={item}>{item}</option>
-                        ))}
+                        {sizes.map(
+                          item =>
+                            item === size[0] ? (
+                              <option selected={'true'} value={item}>
+                                {item}
+                              </option>
+                            ) : (
+                              <option value={item}>{item}</option>
+                            )
+                        )}
                       </select>
                     </div>
                   </div>
