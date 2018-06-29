@@ -3,23 +3,41 @@ import { Link } from 'react-router-dom';
 
 export default function ProductCategory() {
   return (
-    <ul class="list-group">
-      <Link to="/" class="list-group-item list-group-item-action list-all">
+    <ul className="list-group">
+      <Link
+        to={`/`}
+        className="list-group-item list-group-item-action list-all"
+      >
         All
       </Link>
-      <Link to="/" class="list-group-item list-group-item-action list-dress">
+      <Link
+        to={`/`}
+        className="list-group-item list-group-item-action list-dress"
+      >
         Dress
       </Link>
-      <Link to="/" class="list-group-item list-group-item-action list-coat">
+      <Link
+        to={`/`}
+        className="list-group-item list-group-item-action list-coat"
+      >
         Coat
       </Link>
-      <Link to="/" class="list-group-item list-group-item-action list-shoes">
+      <Link
+        to={`/`}
+        className="list-group-item list-group-item-action list-shoes"
+      >
         Shoes
       </Link>
-      <Link to="/" class="list-group-item list-group-item-action list-bags">
+      <Link
+        to={`/`}
+        className="list-group-item list-group-item-action list-bags"
+      >
         Bags
       </Link>
-      <Link to="/" class="list-group-item list-group-item-action list-shirts">
+      <Link
+        to={`/`}
+        className="list-group-item list-group-item-action list-shirts"
+      >
         Shirts
       </Link>
     </ul>
