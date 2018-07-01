@@ -7,7 +7,7 @@ export default function DetailTabCommentList({ comments = [] } = {}) {
   return (
     <div className="product-review-box">
       <DetailCommentConsumer>
-        {({ loading, sendComment }) => (
+        {({ sendComment }) => (
           <DetailTabCommentForm
             onComment={async (rating, comment, productId) => {
               await sendComment(rating, comment, productId);
