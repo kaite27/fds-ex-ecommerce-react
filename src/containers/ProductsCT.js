@@ -15,9 +15,10 @@ export default class ProductsCT extends React.Component {
         <NavBar />
         <ProductProvider>
           <ProductConsumer>
-            {({ products }) => (
+            {({ products, onCategory }) => (
               <ProductList
                 as={Link}
+                onCategory={onCategory}
                 products={products.map(p => ({
                   linkProps: { to: `/product/${p.id}` },
                   ...p,
