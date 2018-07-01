@@ -7,17 +7,29 @@ const { Provider, Consumer } = React.createContext();
 class ProductProvider extends React.Component {
   state = {
     products: [],
-    category: 'dress',
+    category: '',
     loading: false,
   };
 
   async componentDidMount() {
+    await this.loadProducts(this.state.category);
+  }
+
+  handleChangeCategory = async category => {
+    this.setState({
+      loading: true,
+    });
+    await this.loadProducts(category);
+    this.setState({
+      loading: false,
+    });
+  };
+
+  loadProducts = async category => {
     this.setState({ loading: true });
     try {
       const res = await mallAPI.get(
-        `/products?_embed=attributes&_sort=id&_order=desc&category_like=${
-          this.state.category
-        }`
+        `/products?_embed=attributes&_sort=id&_order=desc&category_like=${category}`
       );
       const attrRes = await mallAPI.get(`/attributes`);
 
@@ -62,15 +74,15 @@ class ProductProvider extends React.Component {
       this.setState({
         products: arr,
       });
-      console.log(this.state.products);
     } finally {
       this.setState({ loading: false });
     }
-  }
+  };
 
   render() {
     const value = {
       ...this.state,
+      onCategory: this.handleChangeCategory,
     };
     return <Provider value={value}>{this.props.children}</Provider>;
   }
