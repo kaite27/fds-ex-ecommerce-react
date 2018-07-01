@@ -24,9 +24,9 @@ export default function ProductItem({
               src={imageURL}
               alt={title}
             />
-            <Link to={`/`} className="img-box__btn card-link btn btn-success">
+            <Button className="img-box__btn card-link btn btn-success">
               <i className="icon-wish far fa-heart" /> Wish
-            </Link>
+            </Button>
           </Link>
         </div>
         <div className="product-page__card">
