@@ -1,45 +1,45 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default function ProductCategory() {
+export default function ProductCategory({ onCategory = category => {} }) {
   return (
     <ul className="list-group">
-      <Link
-        to={`/`}
+      <button
         className="list-group-item list-group-item-action list-all"
+        onClick={e => onCategory('')}
       >
         All
-      </Link>
-      <Link
-        to={`/`}
+      </button>
+      <button
         className="list-group-item list-group-item-action list-dress"
+        onClick={e => onCategory('Dress')}
       >
         Dress
-      </Link>
-      <Link
-        to={`/`}
+      </button>
+      <button
         className="list-group-item list-group-item-action list-coat"
+        onClick={e => onCategory('Coat')}
       >
         Coat
-      </Link>
-      <Link
-        to={`/`}
+      </button>
+      <button
         className="list-group-item list-group-item-action list-shoes"
+        onClick={e => onCategory('Shoes')}
       >
         Shoes
-      </Link>
-      <Link
-        to={`/`}
+      </button>
+      <button
         className="list-group-item list-group-item-action list-bags"
+        onClick={e => onCategory('Bags')}
       >
         Bags
-      </Link>
-      <Link
-        to={`/`}
+      </button>
+      <button
         className="list-group-item list-group-item-action list-shirts"
+        onClick={e => onCategory('Shirts')}
       >
         Shirts
-      </Link>
+      </button>
     </ul>
   );
 }
