@@ -15,16 +15,16 @@ export default function NavBar({
           </Link>
         </Navbar.Brand>
         <Nav>
-          <NavItem className="nav-item" eventKey={1} href="#">
+          <NavItem className="nav-item" eventKey={1} href="/">
             Home
           </NavItem>
-          <NavItem className="nav-item" eventKey={2} href="#">
+          <NavItem className="nav-item" eventKey={2} href="/#new-product">
             New Arrivals
           </NavItem>
-          <NavItem className="nav-item" eventKey={3} href="#">
+          <NavItem className="nav-item" eventKey={3} href="/product">
             Products
           </NavItem>
-          <NavItem className="nav-item" eventKey={4} href="#">
+          <NavItem className="nav-item" eventKey={4} href="/#subscribes">
             Contact us
           </NavItem>
           <NavItem className="username-box">
@@ -59,11 +59,8 @@ export default function NavBar({
               Log Out
             </MenuItem>
           </NavDropdown>
-
           <NavItem className="cart-icon">
-            <Link to="/">
-              <i className="fas fa-shopping-cart cart-icon__i" />
-            </Link>
+            <i className="fas fa-shopping-cart cart-icon__i" />
             <span className="badge badge-circle cart-item__cnt" />
           </NavItem>
         </Nav>
