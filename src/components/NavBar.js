@@ -39,7 +39,7 @@ export default function NavBar({
             <MenuItem className="dropdown-item offScreen" eventKey={3.1}>
               Manage Site
             </MenuItem>
-            <MenuItem className="dropdown-item" eventKey={3.2}>
+            <MenuItem className="dropdown-item" eventKey={3.2} href="/register">
               Sign in
             </MenuItem>
             <MenuItem className="dropdown-item" eventKey={3.3}>
@@ -52,10 +52,26 @@ export default function NavBar({
               Sales Report
             </MenuItem>
             <MenuItem divider />
-            <MenuItem className="dropdown-item" eventKey={3.6}>
+            <MenuItem
+              className={
+                localStorage.getItem('token')
+                  ? 'dropdown-item offScreen'
+                  : 'dropdown-item'
+              }
+              eventKey={3.6}
+              href="/login"
+            >
               Log in
             </MenuItem>
-            <MenuItem className="dropdown-item offScreen" eventKey={3.7}>
+            <MenuItem
+              className={
+                localStorage.getItem('token')
+                  ? 'dropdown-item'
+                  : 'dropdown-item offScreen'
+              }
+              eventKey={3.7}
+              onClick={() => onLogout()}
+            >
               Log Out
             </MenuItem>
           </NavDropdown>
