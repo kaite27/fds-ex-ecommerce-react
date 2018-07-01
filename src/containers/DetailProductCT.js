@@ -34,6 +34,7 @@ export default class DetailProductCT extends React.Component {
             onPriceCalculate,
             onUpdateColor,
             onUpdateSize,
+            comments,
           }) => (
             <React.Fragment>
               <DetailProduct
@@ -57,7 +58,9 @@ export default class DetailProductCT extends React.Component {
                 onUpdateColor={onUpdateColor}
                 onUpdateSize={onUpdateSize}
               />
-              <DetailTabs />
+              <DetailCommentProvider id={id}>
+                <DetailTabs comments={comments} />
+              </DetailCommentProvider>
             </React.Fragment>
           )}
         </DetailProductConsumer>
