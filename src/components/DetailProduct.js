@@ -179,7 +179,6 @@ export default class DetailProduct extends Component {
                           value={this.state.inputValue}
                           data-toggle="tooltip"
                           title="No more!"
-                          defaultValue="1"
                         />
                       </div>
                       <span className="option-quantity-remain-box">
