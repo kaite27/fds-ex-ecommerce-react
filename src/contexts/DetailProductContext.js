@@ -19,6 +19,7 @@ class DetailProductProvider extends React.Component {
     attrSKU: '',
     productMarketPrice: 0,
     productUnitPrice: 0,
+    comments: [],
     // avgRate: '',
     // cntRates: 0,
     loading: false,
@@ -40,8 +41,11 @@ class DetailProductProvider extends React.Component {
       const res = await mallAPI.get(
         `/attributes?productId=${id}&defaultAttr=true&_expand=product`
       );
-      // const reviewRes = await mallAPI.get('/reviews?productId=${id}');
+      // product attribute get 요청
       const attrRes = await mallAPI.get(`/attributes?productId=${id}`);
+
+      // product comment get 요청
+      const reviewRes = await mallAPI.get(`/reviews?productId=${id}`);
 
       // 컬러와 사이즈 중복 값 제거
       const avoidColor = attrRes.data
@@ -71,6 +75,7 @@ class DetailProductProvider extends React.Component {
         attrSKU: res.data.map(p => p.attrSKU),
         productMarketPrice: res.data.map(p => p.productMarketPrice),
         productUnitPrice: res.data.map(p => p.productUnitPrice),
+        comments: reviewRes.data.map(p => p),
       });
     } finally {
       this.setState({ loading: false });
