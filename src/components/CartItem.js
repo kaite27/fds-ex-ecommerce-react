@@ -2,8 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 export default function CartItem({
-  marketPrice, // product salse price
-  unitPrice,
+  productId,
+  productMarketPrice, // product salse price
+  productUnitPrice,
   color,
   size,
   selectedQtt,
@@ -19,7 +20,9 @@ export default function CartItem({
           <input type="checkbox" class="product-checkbox-btn" />
         </div>
         <div class="product-image">
-          <img class="product-cart-image" src={imageURL} alt={productTitle} />
+          <Link to={`/product/${productId}`}>
+            <img class="product-cart-image" src={imageURL} alt={productTitle} />
+          </Link>
         </div>
         <div class="product-details">
           <div class="product-title">{productTitle}</div>
@@ -27,8 +30,8 @@ export default function CartItem({
           <div class="attribute-color">{color}</div>
           <div class="attribute-size">{size}</div>
         </div>
-        <div class="product-price__unit">{unitPrice}</div>
-        <div class="product-price__market">{marketPrice}</div>
+        <div class="product-price__unit">{productUnitPrice}</div>
+        <div class="product-price__market">{productMarketPrice}</div>
         <div class="product-quantity-box">
           <input
             class="product-quantity"
@@ -44,7 +47,7 @@ export default function CartItem({
           </button>
           <div class="attribute-max">{availableQtt}</div>
         </div>
-        <div class="product-subtot">{selectedQtt * marketPrice}</div>
+        <div class="product-subtot">{selectedQtt * productMarketPrice}</div>
         <div class="product-removal">
           <button
             type="submit"
