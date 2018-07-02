@@ -1,7 +1,12 @@
 import React from 'react';
 import CartItem from './CartItem';
 
-export default function CartList({ carts = [] }) {
+export default function CartList({
+  carts = [],
+  subTotal = 0.0,
+  salesTax = 0.0,
+  total = 0.0,
+}) {
   return (
     <React.Fragment>
       <section class="cart-page">
@@ -17,7 +22,8 @@ export default function CartList({ carts = [] }) {
               <label class="product-checkbox">Check</label>
               <label class="product-image">Image</label>
               <label class="product-details">Product</label>
-              <label class="product-price">Price</label>
+              <label class="product-price__market">Original</label>
+              <label class="product-price__unit">Sales</label>
               <label class="product-quantity-box">Quantity</label>
               <label class="product-subtot">Subtotal</label>
               <label class="product-removal">Remove</label>
@@ -27,19 +33,19 @@ export default function CartList({ carts = [] }) {
               <div class="totals-item">
                 <label>Subtotal</label>
                 <div class="totals-value" id="cart-subtotal">
-                  0
+                  {subTotal}
                 </div>
               </div>
               <div class="totals-item">
                 <label>Tax (6.625%)</label>
                 <div class="totals-value" id="cart-tax">
-                  0.00
+                  {salesTax}
                 </div>
               </div>
               <div class="totals-item totals-item-total">
                 <label>Grand Total</label>
                 <div class="totals-value" id="cart-total">
-                  0.00
+                  {total}
                 </div>
               </div>
             </div>
