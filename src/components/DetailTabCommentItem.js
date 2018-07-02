@@ -3,21 +3,23 @@ import { Button } from 'react-bootstrap';
 
 export default class DetailTabCommentItem extends React.Component {
   state = {
-    value: true,
+    authedUser: true,
   };
 
   onCheckUser = () => {
-    parseInt(localStorage.getItem('userId')) === this.props.userId
+    parseInt(localStorage.getItem('userId'), 10) === this.props.userId
       ? this.setState({
-          value: false,
+          authedUser: false,
         })
       : this.setState({
-          value: true,
+          authedUser: true,
         });
   };
+
   componentDidMount() {
     this.onCheckUser();
   }
+
   render() {
     const { body, rating, userId, date, id, onDelete } = this.props;
     return (
@@ -42,7 +44,7 @@ export default class DetailTabCommentItem extends React.Component {
               onClick={e => {
                 onDelete(id);
               }}
-              disabled={this.state.value}
+              disabled={this.state.authedUser}
             >
               DELETE
             </Button>
