@@ -9,12 +9,15 @@ export default class CartCT extends React.Component {
     return (
       <CartProvider>
         <CartConsumer>
-          {({ carts }) => (
+          {({ carts, total, salesTax, subTotal }) => (
             <CartList
               as={Link}
-              carts={carts.map(p => ({
-                linkProps: { to: `/product/${p.productId}` },
-                ...p,
+              total={total}
+              salesTax={salesTax}
+              subTotal={subTotal}
+              carts={carts.map(c => ({
+                linkProps: { to: `/product/${c.productId}` },
+                ...c,
               }))}
             />
           )}
