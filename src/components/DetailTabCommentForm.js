@@ -2,13 +2,25 @@ import React, { Component } from 'react';
 import { Button, Form, FormGroup, FormControl } from 'react-bootstrap';
 
 export default class DetailTabCommentForm extends Component {
+  state = {
+    newTodoBody: '',
+  };
+  handleInputChange = e => {
+    this.setState({
+      newTodoBody: e.target.value,
+    });
+  };
   handleSubmit = e => {
     e.preventDefault();
     const { onComment } = this.props;
-    onComment(this.ratingRef.value, this.commentRef.value);
+    onComment(this.ratingRef.value, this.state.newTodoBody);
+    this.setState({
+      newTodoBody: '',
+    });
   };
 
   render() {
+    const { newTodoBody } = this.state;
     return (
       <div className="new-reviwe-box">
         <Form inline onSubmit={this.handleSubmit}>
@@ -31,12 +43,11 @@ export default class DetailTabCommentForm extends Component {
           <FormGroup controlId="formInlineComment">
             <FormControl
               componentClass="input"
-              inputRef={ref => {
-                this.commentRef = ref;
-              }}
               className="review-input-comment"
               type="text"
               placeholder="Your comment.."
+              value={newTodoBody}
+              onChange={this.handleInputChange}
             />
           </FormGroup>{' '}
           <Button type="submit" bsStyle="primary">
