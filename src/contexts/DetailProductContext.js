@@ -76,6 +76,14 @@ class DetailProductProvider extends React.Component {
         productMarketPrice: res.data.map(p => p.productMarketPrice),
         productUnitPrice: res.data.map(p => p.productUnitPrice),
         comments: reviewRes.data.map(p => p),
+        subTotal: res.data.map(p => p.productMarketPrice),
+        total: (
+          0.06625 *
+          (res.data.map(p => p.productMarketPrice) + 1)
+        ).toFixed(2),
+        salesTax: (res.data.map(p => p.productMarketPrice) * 0.06625).toFixed(
+          2
+        ),
       });
     } finally {
       this.setState({ loading: false });
