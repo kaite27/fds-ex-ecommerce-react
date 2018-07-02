@@ -5,7 +5,10 @@ import {
   DetailProductProvider,
   DetailProductConsumer,
 } from '../contexts/DetailProductContext';
-import { DetailCommentProvider } from '../contexts/DetailCommentsFormContext.js';
+import {
+  DetailCommentProvider,
+  DetailCommentConsumer,
+} from '../contexts/DetailCommentsFormContext.js';
 import DetailProduct from '../components/DetailProduct';
 import DetailTabs from '../components/DetailTabs';
 
@@ -52,7 +55,9 @@ export default class DetailProductCT extends React.Component {
           </DetailProductConsumer>
         </DetailProductProvider>
         <DetailCommentProvider id={id}>
-          <DetailTabs />
+          <DetailCommentConsumer>
+            {({ comments }) => <DetailTabs comments={comments} />}
+          </DetailCommentConsumer>
         </DetailCommentProvider>
       </React.Fragment>
     );

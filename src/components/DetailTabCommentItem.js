@@ -3,7 +3,7 @@ import { Button } from 'react-bootstrap';
 
 export default class DetailTabCommentItem extends React.Component {
   state = {
-    value: '',
+    value: true,
   };
 
   onCheckUser = () => {
