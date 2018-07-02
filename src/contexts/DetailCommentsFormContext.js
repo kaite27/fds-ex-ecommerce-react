@@ -6,9 +6,25 @@ const { Provider, Consumer } = React.createContext();
 class DetailCommentProvider extends Component {
   state = {
     loading: false,
+    comments: [],
+  };
+  async componentDidMount() {
+    await this.fetchComments();
+  }
+  fetchComments = async () => {
+    const { id } = this.props;
+    this.setState({
+      loading: true,
+    });
+    const reviewRes = await mallAPI.get(`/reviews?productId=${id}`);
+
+    this.setState({
+      comments: reviewRes.data.map(p => p),
+      loading: false,
+    });
   };
 
-  sendComment = async (rating, comment, productId) => {
+  sendComment = async (rating, comment) => {
     this.setState({
       loading: true,
     });
@@ -31,12 +47,22 @@ class DetailCommentProvider extends Component {
         loading: false,
       });
     }
+    await this.fetchComments();
+  };
+  deleteComment = async id => {
+    this.setState({
+      loading: true,
+    });
+    await mallAPI.delete(`reviews/${id}`);
+    await this.fetchComments();
   };
 
   render() {
     const value = {
       loading: this.state.loading,
+      comments: this.state.comments,
       sendComment: this.sendComment,
+      deleteComment: this.deleteComment,
     };
     return <Provider value={value}>{this.props.children}</Provider>;
   }

@@ -30,7 +30,6 @@ export default class DetailProductCT extends React.Component {
               attrSKU,
               productMarketPrice,
               productUnitPrice,
-              comments,
             }) => (
               <React.Fragment>
                 <DetailProduct
@@ -48,13 +47,13 @@ export default class DetailProductCT extends React.Component {
                   productMarketPrice={productMarketPrice}
                   productUnitPrice={productUnitPrice}
                 />
-                <DetailCommentProvider id={id}>
-                  <DetailTabs comments={comments} />
-                </DetailCommentProvider>
               </React.Fragment>
             )}
           </DetailProductConsumer>
         </DetailProductProvider>
+        <DetailCommentProvider id={id}>
+          <DetailTabs />
+        </DetailCommentProvider>
       </React.Fragment>
     );
   }
