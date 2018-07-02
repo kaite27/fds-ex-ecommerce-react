@@ -18,9 +18,10 @@ export default function DetailTab({ comments = [] }) {
                 />
               </div>
             </Tab>
-            <Tab eventKey={2} title="Reviews (0)">
-              <DetailTabCommentList comments={comments} />
+            <Tab eventKey={2} title={`Reviews(${comments.length})`}>
+              <DetailTabCommentList />
             </Tab>
+
             <Tab eventKey={3} title="Return Policy">
               <DetailTabPolicy />
             </Tab>
