@@ -15,26 +15,30 @@ export default function CartItem({
 }) {
   return (
     <React.Fragment>
-      <div class="product-cart">
-        <div class="product-checkbox">
-          <input type="checkbox" class="product-checkbox-btn" />
+      <div className="product-cart">
+        <div className="product-checkbox">
+          <input type="checkbox" className="product-checkbox-btn" />
         </div>
-        <div class="product-image">
+        <div className="product-image">
           <Link to={`/product/${productId}`}>
-            <img class="product-cart-image" src={imageURL} alt={productTitle} />
+            <img
+              className="product-cart-image"
+              src={imageURL}
+              alt={productTitle}
+            />
           </Link>
         </div>
-        <div class="product-details">
-          <div class="product-title">{productTitle}</div>
-          <div class="product-description">{productDesc}</div>
-          <div class="attribute-color">{color}</div>
-          <div class="attribute-size">{size}</div>
+        <div className="product-details">
+          <div className="product-title">{productTitle}</div>
+          <div className="product-description">{productDesc}</div>
+          <div className="attribute-color">{color}</div>
+          <div className="attribute-size">{size}</div>
         </div>
-        <div class="product-price__unit">{productUnitPrice}</div>
-        <div class="product-price__market">{productMarketPrice}</div>
-        <div class="product-quantity-box">
+        <div className="product-price__unit">{productUnitPrice}</div>
+        <div className="product-price__market">{productMarketPrice}</div>
+        <div className="product-quantity-box">
           <input
-            class="product-quantity"
+            className="product-quantity"
             type="number"
             defaultValue={selectedQtt}
             min="1"
@@ -42,16 +46,16 @@ export default function CartItem({
             data-toggle="tooltip"
             title="No more!"
           />
-          <button type="submit" class="button is-small update-product">
+          <button type="submit" className="button is-small update-product">
             Update
           </button>
-          <div class="attribute-max">{availableQtt}</div>
+          <div className="attribute-max">{availableQtt}</div>
         </div>
-        <div class="product-subtot">{selectedQtt * productMarketPrice}</div>
-        <div class="product-removal">
+        <div className="product-subtot">{selectedQtt * productMarketPrice}</div>
+        <div className="product-removal">
           <button
             type="submit"
-            class="button is-danger remove-product"
+            className="button is-danger remove-product"
             data-toggle="modal"
             data-target=".bd-example-modal-sm"
           >
@@ -59,21 +63,21 @@ export default function CartItem({
           </button>
           {/* ----- modal ----- */}
           <div
-            class="modal fade bd-example-modal-sm"
-            tabindex="-1"
+            className="modal fade bd-example-modal-sm"
+            tabIndex="-1"
             role="dialog"
             aria-labelledby="mySmallModalLabel"
             aria-hidden="true"
           >
-            <div class="modal-dialog modal-sm">
-              <div class="modal-content">
-                <div class="modal-header modal-header-2">
-                  <p class="modal-title" id="exampleModalLabel">
+            <div className="modal-dialog modal-sm">
+              <div className="modal-content">
+                <div className="modal-header modal-header-2">
+                  <p className="modal-title" id="exampleModalLabel">
                     Item has deleted!
                   </p>
                   <button
                     type="button"
-                    class="close"
+                    className="close"
                     data-dismiss="modal"
                     aria-label="Close"
                   >
@@ -85,7 +89,7 @@ export default function CartItem({
           </div>
           {/* ----- modal ----- */}
         </div>
-        <div class="divider-white" />
+        <div className="divider-white" />
       </div>
     </React.Fragment>
   );
