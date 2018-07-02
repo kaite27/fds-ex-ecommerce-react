@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 import {
   DetailProductProvider,
@@ -33,6 +32,12 @@ export default class DetailProductCT extends React.Component {
               attrSKU,
               productMarketPrice,
               productUnitPrice,
+              subTotal,   
+              total,
+              salesTax,
+              onPriceCalculate,
+              onUpdateColor,
+              onUpdateSize,
             }) => (
               <React.Fragment>
                 <DetailProduct
@@ -49,6 +54,12 @@ export default class DetailProductCT extends React.Component {
                   attrSKU={attrSKU}
                   productMarketPrice={productMarketPrice}
                   productUnitPrice={productUnitPrice}
+                  subTotal={subTotal}
+                  total={total}
+                  salesTax={salesTax}
+                  onPriceCalculate={onPriceCalculate}
+                  onUpdateColor={onUpdateColor}
+                  onUpdateSize={onUpdateSize}
                 />
               </React.Fragment>
             )}

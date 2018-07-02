@@ -3,14 +3,17 @@ import React from 'react';
 import ProductCategory from './ProductCategory';
 import ProductItem from './ProductItem';
 
-export default function ProductList({ products = [] } = {}) {
+export default function ProductList({
+  products = [],
+  onCategory = category => {},
+}) {
   return (
     <React.Fragment>
       <section className="product-page">
         <div className="rows">
           <div className="columns">
             <div className="column is-one-fifth product-category">
-              <ProductCategory />
+              <ProductCategory onCategory={onCategory} />
             </div>
             <div className="column product-container">
               <div className="search-control">

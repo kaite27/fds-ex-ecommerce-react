@@ -351,6 +351,8 @@ section {
 .username-box a {
   min-width: 200px;
   color: $color-green !important;
+  cursor: default;
+  font-weight: 600;
 }
 
 /* ---------- cart setting ----------- */
