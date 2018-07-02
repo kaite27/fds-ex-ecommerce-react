@@ -11547,31 +11547,57 @@ section {
 
 .product-details {
   float: left;
-  width: 40%;
+  width: 38%;
 }
 
-.product-price {
+.product-price__market {
+  float: left;
+  width: 8%;
+}
+
+.product-price__unit {
   float: left;
   width: 8%;
 }
 
 .product-quantity-box {
   float: left;
-  width: 16%;
+  width: 13%;
 }
 
 .product-subtot {
   float: left;
-  width: 10%;
+  width: 9%;
 }
 
 .product-removal {
   float: left;
-  width: 10%;
+  width: 8%;
 }
 
 /* Apply dollar signs */
-.product .product-price:before,
+.product-cart .product-price__unit {
+  text-decoration: line-through;
+  color: #999;
+}
+
+.product-cart .product-price__unit:before {
+  content: '$';
+}
+
+.product-cart .product-price__market:before {
+  content: '$';
+}
+
+.product-cart .product-subtot {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.product-cart .product-subtot:before {
+  content: '$';
+}
+
 .product .product-subtot:before,
 .totals-value:before {
   content: '$';
@@ -11620,34 +11646,34 @@ section {
 }
 
 /* Product entries */
-.product {
+.product-cart {
   margin-bottom: 20px;
   padding-bottom: 10px;
   border-bottom: 1px solid #999;
 }
 
-.product-attr {
+.product-cart-attr {
   margin-bottom: 30px;
   border-bottom: 0;
 }
 
-.product .product-image {
+.product-cart .product-image {
   text-align: center;
   height: 120px;
 }
 
-.product .product-image img {
+.product-cart .product-image img {
   width: 110px;
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
 }
 
-.product .product-details .product-title {
+.product-cart .product-details .product-title {
   margin-right: 20px;
 }
 
-.product .product-details .product-description {
+.product-cart .product-details .product-description {
   margin: 5px 20px 5px 0;
   line-height: 1.4em;
   color: #999;
@@ -11658,18 +11684,19 @@ section {
   width: 350px;
 }
 
-.product .product-quantity {
+.product-cart .product-quantity {
   width: 80px;
   padding-left: 7px;
 }
 
-.product-checkbox-btn {
+.product-cart-checkbox-btn {
   margin: 100% 50%;
   width: 20px;
   height: 20px;
 }
 
 .product-cart:nth-child(2n) {
+  margin-top: -17px;
   background-color: #f6f4f4;
 }
 
