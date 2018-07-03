@@ -21,6 +21,7 @@ class LoginProvider extends Component {
       if (e.response && e.response.status === 400) {
         alert('Wrong ID or Password!');
       }
+      throw e;
     }
   };
 
