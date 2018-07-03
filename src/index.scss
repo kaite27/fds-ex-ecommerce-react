@@ -1408,6 +1408,12 @@ footer > div > p {
     .form-group {
       display: flex;
       justify-content: center;
+      .help-block {
+        text-align: start;
+        font-size: 12px;
+        margin: 0;
+        padding-top: 5px;
+      }
     }
   }
 }

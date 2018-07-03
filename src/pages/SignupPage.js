@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 
-import LoginFormCT from '../containers/LoginFormCT';
 import NavBarCT from '../containers/NavBarCT';
-
+import SignupFormCT from '../containers/SignupFormCT';
 export default class LoginPage extends Component {
   render() {
     return (
       <React.Fragment>
         <NavBarCT />
-        <LoginFormCT />
+        <SignupFormCT />
       </React.Fragment>
     );
   }

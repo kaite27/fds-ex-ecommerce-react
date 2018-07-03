@@ -21,6 +21,8 @@ export default class NavBarCT extends React.Component {
       <NavBar
         loginAs={Link}
         loginProps={{ to: '/login' }}
+        signupAs={Link}
+        signupPros={{ to: '/register' }}
         onLogout={() => {
           this.logout();
         }}
