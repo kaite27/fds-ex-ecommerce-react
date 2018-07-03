@@ -10729,7 +10729,7 @@ h2:after {
   display: block;
   height: 2px;
   background-color: #e67e22;
-  content: " ";
+  content: ' ';
   width: 200px;
   margin: 20px auto;
 }
@@ -10782,7 +10782,7 @@ section {
 }
 
 .lds-roller div:after {
-  content: " ";
+  content: ' ';
   display: block;
   position: absolute;
   width: 6px;
@@ -11074,7 +11074,7 @@ section {
 .main-header {
   display: -ms-grid;
   display: grid;
-      grid-template-areas: "cr one two" "cr three four";
+      grid-template-areas: 'cr one two' 'cr three four';
   -ms-grid-columns: 3fr 1fr 1fr;
       grid-template-columns: 3fr 1fr 1fr;
   -ms-grid-rows: 200px 200px;
@@ -12145,5 +12145,23 @@ footer > div > p {
     -webkit-filter: hue-rotate(360deg);
             filter: hue-rotate(360deg);
   }
+}
+
+.container__inner {
+  text-align: center;
+  margin-top: 100px;
+}
+
+.container__inner h1 {
+  margin-bottom: 50px;
+}
+
+.container__inner .form-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 /*# sourceMappingURL=index.css.map */
