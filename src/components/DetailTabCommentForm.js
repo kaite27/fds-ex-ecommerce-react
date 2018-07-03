@@ -13,7 +13,11 @@ export default class DetailTabCommentForm extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const { onComment } = this.props;
-    onComment(this.ratingRef.value, this.state.newTodoBody);
+    if (localStorage.getItem('token')) {
+      onComment(this.ratingRef.value, this.state.newTodoBody);
+    } else {
+      alert('Need to Login');
+    }
     this.setState({
       newTodoBody: '',
     });
