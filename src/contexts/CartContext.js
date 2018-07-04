@@ -7,6 +7,7 @@ const { Provider, Consumer } = React.createContext();
 class CartProvider extends React.Component {
   state = {
     carts: [],
+    cartedItem: 0,
     loading: false,
     subTotal: 0,
     salesTax: 0,
@@ -39,6 +40,30 @@ class CartProvider extends React.Component {
       });
     } finally {
       this.priceCalculate();
+      this.countCartedItem();
+      this.setState({ loading: false });
+    }
+  };
+
+  countCartedItem = () => {
+    this.setState({
+      cartedItem: this.state.carts.length,
+    });
+    localStorage.setItem('cartItem', this.state.cartedItem);
+  };
+
+  reloadSelectedQtt = async () => {
+    this.setState({ loading: true });
+    try {
+      const res = await mallAPI.get(`/carts`);
+      this.setState({
+        carts: res.data.map(c => ({
+          ...c,
+          selectedQtt: c.selectedQtt,
+        })),
+      });
+    } finally {
+      this.priceCalculate();
       this.setState({ loading: false });
     }
   };
@@ -49,9 +74,10 @@ class CartProvider extends React.Component {
       carts: this.state.carts.filter(t => t.id !== id),
     });
     try {
-      await mallAPI.delete(`/carts?id=${id}`);
-    } finally {
+      await mallAPI.delete(`/carts/${id}`);
       await this.loadCartItem();
+    } finally {
+      this.countCartedItem();
       this.setState({ loading: false });
     }
   };
@@ -75,10 +101,12 @@ class CartProvider extends React.Component {
     });
     try {
       const payload = {
-        selectedQtt: quantity,
+        selectedQtt: parseInt(quantity, 10),
       };
       await mallAPI.patch(`/carts/${id}`, payload);
+      await this.reloadSelectedQtt();
     } finally {
+      this.priceCalculate();
       this.setState({ loading: false });
     }
   };
@@ -86,8 +114,8 @@ class CartProvider extends React.Component {
   render() {
     const value = {
       ...this.state,
-      onDeleteCartItem: this.deleteCartItem,
-      onpriceCalculate: this.priceCalculate,
+      deleteCartItem: this.deleteCartItem,
+      updateSelectedQtt: this.updateSelectedQtt,
     };
     return <Provider value={value}>{this.props.children}</Provider>;
   }
