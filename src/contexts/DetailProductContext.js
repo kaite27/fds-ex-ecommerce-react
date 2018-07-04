@@ -160,7 +160,10 @@ class DetailProductProvider extends React.Component {
       await mallAPI.post('/carts', payload);
     } finally {
       this.setState({ loading: false });
-      localStorage.setItem('cartItem', parseInt(localStorage.getItem('cartItem'), 10) + 1);
+      localStorage.setItem(
+        'cartItem',
+        parseInt(localStorage.getItem('cartItem'), 10) + 1
+      );
     }
   };
 
