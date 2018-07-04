@@ -11,15 +11,13 @@ export default class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <React.Fragment>
-          <Switch>
-            <Route path="/login" component={LoginPage} />
-            <Route path="/product/:id" component={DetailPage} />
-            <Route exact path="/product" component={ProductPage} />
-            <Route path="/my-cart" component={CartPage} />
-            <Route exact path="/" component={MainPage} />
-          </Switch>
-        </React.Fragment>
+        <Switch>
+          <Route path="/login" component={LoginPage} />
+          <Route path="/product/:id" component={DetailPage} />
+          <Route exact path="/product" component={ProductPage} />
+          <Route path="/my-cart" component={CartPage} />
+          <Route exact path="/" component={MainPage} />
+        </Switch>
       </BrowserRouter>
     );
   }
