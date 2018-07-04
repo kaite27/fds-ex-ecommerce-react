@@ -7,6 +7,7 @@ import DetailPage from './pages/DetailPage';
 import ProductPage from './pages/ProductPage';
 import CartPage from './pages/CartPage';
 import SignupPage from './pages/SignupPage';
+import AdminPage from './pages/AdminPage';
 
 export default class App extends Component {
   render() {
@@ -18,6 +19,7 @@ export default class App extends Component {
           <Route exact path="/product" component={ProductPage} />
           <Route path="/my-cart" component={CartPage} />
           <Route path="/register" component={SignupPage} />
+          <Route path="/admin" component={AdminPage} />
           <Route exact path="/" component={MainPage} />
         </Switch>
       </BrowserRouter>
