@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 
 export default function NavBar({
@@ -10,9 +9,7 @@ export default function NavBar({
     <Navbar>
       <Navbar.Header>
         <Navbar.Brand>
-          <Link className="navbar-brand" to="/">
-            MAll
-          </Link>
+          <a href="/">BEIGENUT</a>
         </Navbar.Brand>
         <Nav>
           <NavItem className="nav-item" eventKey={1} href="/">
@@ -30,6 +27,8 @@ export default function NavBar({
           <NavItem className="username-box">
             {username ? `Welcome ${username} !` : 'Hi there!'}
           </NavItem>
+        </Nav>
+        <Nav pullRight>
           <NavDropdown
             eventKey={3}
             title="Accounts"
@@ -75,9 +74,11 @@ export default function NavBar({
               Log Out
             </MenuItem>
           </NavDropdown>
-          <NavItem className="cart-icon">
+          <NavItem href="/my-cart" className="cart-icon">
             <i className="fas fa-shopping-cart cart-icon__i" />
-            <span className="badge badge-circle cart-item__cnt" />
+            <span className="badge badge-circle cart-item__cnt">
+              {localStorage.getItem('cartItem')}
+            </span>
           </NavItem>
         </Nav>
       </Navbar.Header>
