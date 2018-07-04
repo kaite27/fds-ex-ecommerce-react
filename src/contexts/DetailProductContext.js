@@ -8,6 +8,7 @@ class DetailProductProvider extends React.Component {
   state = {
     colors: [],
     sizes: [],
+    attributeId: 0,
     productId: '',
     productTitle: '',
     productDesc: '',
@@ -65,6 +66,7 @@ class DetailProductProvider extends React.Component {
         productDesc: res.data.map(p => p.product.productDesc),
         imageURL: res.data.map(p => p.product.imageURL),
         category: res.data.map(p => p.product.category),
+        attributeId: res.data.map(p => p.id),
         color: res.data.map(p => p.color),
         size: res.data.map(p => p.size),
         quantity: res.data.map(p => p.quantity),
@@ -94,9 +96,11 @@ class DetailProductProvider extends React.Component {
       );
       this.setState({
         color: color,
-        quantity: res.data.map(p => p.quantity),
+        quantity: res.data.map(p => (p.quantity ? p.quantity : 0)),
         attrSKU: res.data.map(p => p.attrSKU),
+        attributeId: res.data.map(p => p.id),
         productMarketPrice: res.data.map(p => p.productMarketPrice),
+        productUnitPrice: res.data.map(p => p.productUnitPrice),
       });
       this.priceCalculate(1);
     } finally {
@@ -115,9 +119,8 @@ class DetailProductProvider extends React.Component {
         size: size,
         quantity: res.data.map(p => (p.quantity ? p.quantity : 0)),
         attrSKU: res.data.map(p => p.attrSKU),
-        productMarketPrice: res.data.map(
-          p => (p.productMarketPrice ? p.productMarketPrice : 0)
-        ),
+        attributeId: res.data.map(p => p.id),
+        productMarketPrice: res.data.map(p => p.productMarketPrice),
         productUnitPrice: res.data.map(p => p.productUnitPrice),
       });
       this.priceCalculate(1);
@@ -137,12 +140,37 @@ class DetailProductProvider extends React.Component {
     });
   };
 
+  addCart = async inputValue => {
+    this.setState({ loading: true });
+    try {
+      const payload = {
+        userId: 1,
+        productId: parseInt(this.state.productId, 10),
+        attributeId: parseInt(this.state.attributeId, 10),
+        productTitle: this.state.productTitle + '',
+        productDesc: this.state.productDesc + '',
+        size: parseInt(this.state.size, 10),
+        color: this.state.color + '',
+        availableQtt: parseInt(this.state.quantity),
+        selectedQtt: parseInt(inputValue, 10),
+        productMarketPrice: parseFloat(this.state.productMarketPrice, 2),
+        productUnitPrice: parseFloat(this.state.productUnitPrice, 2),
+        imageURL: this.state.imageURL + '',
+      };
+      await mallAPI.post('/carts', payload);
+    } finally {
+      this.setState({ loading: false });
+      localStorage.setItem('cartItem', parseInt(localStorage.getItem('cartItem'), 10) + 1);
+    }
+  };
+
   render() {
     const value = {
       ...this.state,
       onUpdateSize: this.updateSize,
       onUpdateColor: this.updateColor,
       onPriceCalculate: this.priceCalculate,
+      onAddCart: this.addCart,
     };
     return <Provider value={value}>{this.props.children}</Provider>;
   }

@@ -9,12 +9,27 @@ export default class CartCT extends React.Component {
     return (
       <CartProvider>
         <CartConsumer>
-          {({ carts, total, salesTax, subTotal }) => (
+          {({
+            id,
+            carts,
+            total,
+            salesTax,
+            subTotal,
+            updateSelectedQtt,
+            deleteCartItem,
+          }) => (
             <CartList
+              id={id}
               as={Link}
               total={total}
               salesTax={salesTax}
               subTotal={subTotal}
+              deleteCartItem={async id => {
+                await deleteCartItem(id);
+              }}
+              updateSelectedQtt={async (quantity, id) => {
+                await updateSelectedQtt(quantity, id);
+              }}
               carts={carts.map(c => ({
                 linkProps: { to: `/product/${c.productId}` },
                 ...c,

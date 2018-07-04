@@ -38,6 +38,7 @@ export default class DetailProductCT extends React.Component {
               onPriceCalculate,
               onUpdateColor,
               onUpdateSize,
+              onAddCart,
             }) => (
               <React.Fragment>
                 <DetailProduct
@@ -60,6 +61,7 @@ export default class DetailProductCT extends React.Component {
                   onPriceCalculate={onPriceCalculate}
                   onUpdateColor={onUpdateColor}
                   onUpdateSize={onUpdateSize}
+                  onAddCart={onAddCart}
                 />
               </React.Fragment>
             )}

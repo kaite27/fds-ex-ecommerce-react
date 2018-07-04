@@ -33,6 +33,12 @@ export default class DetailProduct extends Component {
     this.setState({ inputValue: 1 });
   };
 
+  handleAddCart = e => {
+    e.preventDefault();
+    const { onAddCart } = this.props;
+    onAddCart(this.state.inputValue);
+  }
+
   render() {
     const {
       colors,
@@ -220,6 +226,7 @@ export default class DetailProduct extends Component {
                     className="button btn_submit--cart"
                     data-toggle="modal"
                     data-target="#exampleModal"
+                    onClick={this.handleAddCart}
                   >
                     Add cart
                   </button>

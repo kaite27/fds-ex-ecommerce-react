@@ -5,11 +5,13 @@ export default class DetailTabCommentForm extends Component {
   state = {
     newTodoBody: '',
   };
+
   handleInputChange = e => {
     this.setState({
       newTodoBody: e.target.value,
     });
   };
+
   handleSubmit = e => {
     e.preventDefault();
     const { onComment } = this.props;

@@ -24,6 +24,13 @@ class LoginProvider extends Component {
 
         const UserRes = await mallAPI.get('/me');
         localStorage.setItem('userId', UserRes.data.id);
+        
+        const cartRes = await mallAPI.get('/carts');
+        const cartItem = cartRes.data.map(c => ({
+          id: c.id,
+        })).length;
+        localStorage.setItem('cartItem', cartItem);
+
         this.setState({ success: true });
       } catch (e) {
         if (e.response && e.response.status === 400) {
@@ -34,12 +41,6 @@ class LoginProvider extends Component {
         }
       }
     }
-  };
-
-  logout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('userId');
-    localStorage.removeItem('username');
   };
 
   render() {
