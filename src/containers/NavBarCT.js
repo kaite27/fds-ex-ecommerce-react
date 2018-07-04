@@ -13,7 +13,9 @@ export default class NavBarCT extends React.Component {
     localStorage.removeItem('token');
     localStorage.removeItem('userId');
     localStorage.removeItem('username');
+    localStorage.removeItem('cartItem');
     this.setState({ loggedOut: true });
+    window.location.reload();
   };
 
   render() {
