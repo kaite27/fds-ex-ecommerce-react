@@ -553,8 +553,7 @@ section {
 .subscribes {
   color: #fff;
   padding-top: 50px;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)),
-    url('https://image.freepik.com/free-photo/coffee-and-technologies-composition_23-2147772389.jpg');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)), url('https://image.freepik.com/free-photo/coffee-and-technologies-composition_23-2147772389.jpg');
   background-repeat: no-repeat;
   background-size: 100%;
   background-attachment: fixed;
@@ -1120,6 +1119,12 @@ section {
   }
 }
 
+.form-add-product__send {
+  .label {
+    text-align: left !important;
+  }
+}
+
 .subtitle {
   color: rgb(180, 180, 180);
 }
@@ -1180,7 +1185,7 @@ section {
 
 .attr-color {
   float: left;
-  width: 16%;
+  width: 14%;
 }
 
 .attr-size {
@@ -1200,7 +1205,7 @@ section {
 
 .attr-quantity {
   float: left;
-  width: 16%;
+  width: 13%;
 }
 
 .add-variants {
@@ -1216,6 +1221,10 @@ section {
     font-weight: 600;
     padding-bottom: 5px;
   }
+}
+
+.delete-circle {
+  color: #fff;
 }
 
 // footer
@@ -1246,48 +1255,48 @@ footer {
   margin-right: 0px;
 }
 
-.footer-nav > li > a:link,
-.footer-nav > li > a:visited,
-.social-links > li > a:link,
-.social-links > li > a:visited {
+.footer-nav>li>a:link,
+.footer-nav>li>a:visited,
+.social-links>li>a:link,
+.social-links>li>a:visited {
   text-decoration: none;
   border: 0;
   color: #888;
   transition: color 0.2s;
 }
 
-.footer-nav > li > a:hover,
-.footer-nav > li > a:active {
+.footer-nav>li>a:hover,
+.footer-nav>li>a:active {
   color: #ddd;
 }
 
-.social-links > li > a:link,
-.social-links > li > a:visited {
+.social-links>li>a:link,
+.social-links>li>a:visited {
   font-size: 200%;
   transition: color 0.2s;
 }
 
-.social-links > li > a > i {
+.social-links>li>a>i {
   transition: color 0.2s;
 }
 
-.social-links > li > a > .ion-social-facebook:hover {
+.social-links>li>a>.ion-social-facebook:hover {
   color: #3b5998;
 }
 
-.social-links > li > a > .ion-social-twitter:hover {
+.social-links>li>a>.ion-social-twitter:hover {
   color: #00aced;
 }
 
-.social-links > li > a > .ion-social-instagram:hover {
+.social-links>li>a>.ion-social-instagram:hover {
   color: #517fa4;
 }
 
-.social-links > li > a > .ion-social-google:hover {
+.social-links>li>a>.ion-social-google:hover {
   color: #dd4b39;
 }
 
-footer > div > p {
+footer>div>p {
   color: #888;
   text-align: center;
   margin-top: 20px;
@@ -1425,7 +1434,6 @@ footer > div > p {
 }
 
 //loginForm
-
 .container {
   &__inner {
     text-align: center;

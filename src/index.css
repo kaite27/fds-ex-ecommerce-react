@@ -11838,6 +11838,10 @@ section {
   background-color: #28a745;
 }
 
+.form-add-product__send .label {
+  text-align: left !important;
+}
+
 .subtitle {
   color: #b4b4b4;
 }
@@ -11895,7 +11899,7 @@ section {
 
 .attr-color {
   float: left;
-  width: 16%;
+  width: 14%;
 }
 
 .attr-size {
@@ -11915,7 +11919,7 @@ section {
 
 .attr-quantity {
   float: left;
-  width: 16%;
+  width: 13%;
 }
 
 .add-variants {
@@ -11929,6 +11933,10 @@ section {
 .attr-labels label {
   font-weight: 600;
   padding-bottom: 5px;
+}
+
+.delete-circle {
+  color: #fff;
 }
 
 footer {
