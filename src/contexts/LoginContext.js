@@ -17,6 +17,12 @@ class LoginProvider extends Component {
 
       const UserRes = await mallAPI.get('/me');
       localStorage.setItem('userId', UserRes.data.id);
+
+      const cartRes = await mallAPI.get('/carts');
+      const cartItem = cartRes.data.map(c => ({
+        id: c.id,
+      })).length;
+      localStorage.setItem('cartItem', cartItem);
     } catch (e) {
       if (e.response && e.response.status === 400) {
         alert('Wrong ID or Password!');
@@ -24,16 +30,9 @@ class LoginProvider extends Component {
     }
   };
 
-  logout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('userId');
-    localStorage.removeItem('username');
-  };
-
   render() {
     const value = {
       login: this.login,
-      logout: this.logout,
     };
     return <Provider value={value}>{this.props.children}</Provider>;
   }
