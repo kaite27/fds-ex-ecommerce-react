@@ -1,6 +1,7 @@
 import React from 'react';
 
 import SubscribesForm from './SubscribesForm';
+import LoadingBox from '../components/LoadingBox';
 import {
   SubscribesProvider,
   SubscribesConsumer,
@@ -24,7 +25,7 @@ export default function Subscribes() {
             <SubscribesConsumer>
               {({ loading, sendEmail }) =>
                 loading ? (
-                  <div>posting..</div> // required css!!
+                  <LoadingBox /> // required css!!
                 ) : (
                   <SubscribesForm
                     onSubscribe={async email => {
