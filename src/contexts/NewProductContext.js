@@ -24,6 +24,7 @@ class NewProductProvider extends React.Component {
           unitPrice: p.productUnitPrice,
           imageURL: p.product.imageURL,
         })),
+        loading: false,
       });
 
       // const res = await mallAPI.get('/attributes?_expand=product');
@@ -62,7 +63,7 @@ class NewProductProvider extends React.Component {
       //     .filter(p => p !== null),
       // });
     } finally {
-      this.setState({ loading: false });
+      // this.setState({  });
     }
   }
 
