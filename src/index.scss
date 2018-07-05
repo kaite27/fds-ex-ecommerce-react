@@ -1,4 +1,4 @@
-@import "../node_modules/bulma/bulma.sass";
+@import '../node_modules/bulma/bulma.sass';
 $color-blue: dodgerblue;
 $color-green: #28a745;
 $color-red: #dc3545;
@@ -7,7 +7,7 @@ $color-grey: #6c757d;
 /* ---------- General Modules ----------- */
 
 .clearfix {
-  zoom: 1
+  zoom: 1;
 }
 
 .clearfix:after {
@@ -97,7 +97,7 @@ h2:after {
   display: block;
   height: 2px;
   background-color: #e67e22;
-  content: " ";
+  content: ' ';
   width: 200px;
   margin: 20px auto;
 }
@@ -125,15 +125,13 @@ section {
 
 .root {
   &--loading {
-    &::after {
-      display: block;
-      position: fixed;
-      top: 0;
-      right: 0;
-      left: 0;
-      bottom: 0;
-      background-color: rgba(0, 0, 0, 0.5);
-    }
+    display: block;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3);
   }
 }
 
@@ -157,7 +155,7 @@ section {
 }
 
 .lds-roller div:after {
-  content: " ";
+  content: ' ';
   display: block;
   position: absolute;
   width: 6px;
@@ -318,9 +316,9 @@ section {
   }
 }
 
-// navigation dropdown button 
+// navigation dropdown button
 .dropdown {
-  margin: 10px 0 0 160px;
+  margin: 10px 0 0;
 }
 
 .dropdown-menu {
@@ -340,7 +338,7 @@ section {
   padding: 10px !important;
 }
 
-// navigation dropdown button - login 
+// navigation dropdown button - login
 .login {
   &--required {
     .root--authed & {
@@ -441,7 +439,7 @@ section {
 }
 
 .new-products-items img {
-  transform: scale(1.00);
+  transform: scale(1);
   opacity: 0.9;
 }
 
@@ -457,13 +455,13 @@ section {
 
 .main-header {
   display: grid;
-  grid-template-areas: "cr one two" "cr three four";
+  grid-template-areas: 'cr one two' 'cr three four';
   grid-template-columns: 3fr 1fr 1fr;
   grid-template-rows: 200px 200px;
   width: 100%;
 }
 
-// 4개 광고 패널 컨트롤 
+// 4개 광고 패널 컨트롤
 .events {
   overflow: hidden;
   position: relative;
@@ -555,7 +553,7 @@ section {
 .subscribes {
   color: #fff;
   padding-top: 50px;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)), url("https://image.freepik.com/free-photo/coffee-and-technologies-composition_23-2147772389.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)), url('https://image.freepik.com/free-photo/coffee-and-technologies-composition_23-2147772389.jpg');
   background-repeat: no-repeat;
   background-size: 100%;
   background-attachment: fixed;
@@ -585,7 +583,7 @@ section {
   }
 }
 
-// product page 페이지 
+// product page 페이지
 .product-detail-img img {
   width: 90%;
   opacity: 0.2;
@@ -666,7 +664,7 @@ section {
   }
 }
 
-// 프로덕트 리스트 전체 앵커 걸기 
+// 프로덕트 리스트 전체 앵커 걸기
 .link-to-product-detail {
   position: absolute;
   display: block;
@@ -838,11 +836,11 @@ section {
 }
 
 .modal-price:before {
-  content: '$'
+  content: '$';
 }
 
 .modal-quantity:before {
-  content: 'x '
+  content: 'x ';
 }
 
 .modal-color,
@@ -1099,25 +1097,22 @@ section {
   }
   &-menu {
     background-color: $color-green;
+    color: #fff !important;
     &:hover {
-      background-color: rgb(127, 197, 111);
-    }
-    a {
-      color: #fff;
+      background-color: rgb(102, 196, 115) !important;
     }
   }
   &-content {
     padding: 3% 5%;
   }
   &-add-product {
-    // background-color: red;
     margin-bottom: 30px;
   }
-  &-link-blink {
-    height: 100vh;
-    &:hover {
-      background-color: $color-green;
-    }
+}
+
+.form-add-product__send {
+  .label {
+    text-align: left !important;
   }
 }
 
@@ -1181,7 +1176,7 @@ section {
 
 .attr-color {
   float: left;
-  width: 16%;
+  width: 14%;
 }
 
 .attr-size {
@@ -1201,7 +1196,7 @@ section {
 
 .attr-quantity {
   float: left;
-  width: 16%;
+  width: 13%;
 }
 
 .add-variants {
@@ -1217,6 +1212,10 @@ section {
     font-weight: 600;
     padding-bottom: 5px;
   }
+}
+
+.delete-circle {
+  color: #fff;
 }
 
 // footer
@@ -1378,7 +1377,7 @@ footer>div>p {
 
 .loader .b3 {
   left: 58%;
-  animation-delay: 200ms
+  animation-delay: 200ms;
 }
 
 .loader .b1,
@@ -1422,5 +1421,26 @@ footer>div>p {
   }
   100% {
     filter: hue-rotate(360deg);
+  }
+}
+
+//loginForm
+.container {
+  &__inner {
+    text-align: center;
+    margin-top: 100px;
+    h1 {
+      margin-bottom: 50px;
+    }
+    .form-group {
+      display: flex;
+      justify-content: center;
+      .help-block {
+        text-align: start;
+        font-size: 12px;
+        margin: 0;
+        padding-top: 5px;
+      }
+    }
   }
 }

@@ -3,26 +3,30 @@ import { Button, Form, FormGroup, FormControl } from 'react-bootstrap';
 
 export default class DetailTabCommentForm extends Component {
   state = {
-    newTodoBody: '',
+    newCommentBody: '',
   };
 
   handleInputChange = e => {
     this.setState({
-      newTodoBody: e.target.value,
+      newCommentBody: e.target.value,
     });
   };
 
   handleSubmit = e => {
     e.preventDefault();
     const { onComment } = this.props;
-    onComment(this.ratingRef.value, this.state.newTodoBody);
+    if (localStorage.getItem('token')) {
+      onComment(this.ratingRef.value, this.state.newCommentBody);
+    } else {
+      alert('Need to Login');
+    }
     this.setState({
-      newTodoBody: '',
+      newCommentBody: '',
     });
   };
 
   render() {
-    const { newTodoBody } = this.state;
+    const { newCommentBody } = this.state;
     return (
       <div className="new-reviwe-box">
         <Form inline onSubmit={this.handleSubmit}>
@@ -48,7 +52,7 @@ export default class DetailTabCommentForm extends Component {
               className="review-input-comment"
               type="text"
               placeholder="Your comment.."
-              value={newTodoBody}
+              value={newCommentBody}
               onChange={this.handleInputChange}
             />
           </FormGroup>{' '}

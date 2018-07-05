@@ -7,7 +7,20 @@ import NavBar from '../components/NavBar';
 export default class NavBarCT extends React.Component {
   state = {
     loggedOut: false,
+    cartItem: null,
   };
+
+  componentDidMount() {
+    this.intervalId = setInterval(() => {
+      this.setState({
+        cartItem: localStorage.getItem('cartItem'),
+      });
+    }, 1000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.intervalId);
+  }
 
   logout = () => {
     localStorage.removeItem('token');
@@ -19,10 +32,14 @@ export default class NavBarCT extends React.Component {
   };
 
   render() {
+    const { cartItem } = this.state;
     return (
       <NavBar
+        cartItem={cartItem}
         loginAs={Link}
         loginProps={{ to: '/login' }}
+        signupAs={Link}
+        signupPros={{ to: '/register' }}
         onLogout={() => {
           this.logout();
         }}

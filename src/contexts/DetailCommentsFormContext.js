@@ -25,10 +25,10 @@ class DetailCommentProvider extends Component {
   };
 
   sendComment = async (rating, comment) => {
-    this.setState({
-      loading: true,
-    });
     try {
+      this.setState({
+        loading: true,
+      });
       const now = new Date();
       const payload = {
         body: comment,
@@ -49,11 +49,15 @@ class DetailCommentProvider extends Component {
     }
     await this.fetchComments();
   };
+
   deleteComment = async id => {
     this.setState({
       loading: true,
     });
     await mallAPI.delete(`reviews/${id}`);
+    this.setState({
+      loading: false,
+    });
     await this.fetchComments();
   };
 

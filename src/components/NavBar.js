@@ -4,6 +4,7 @@ import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 export default function NavBar({
   username = localStorage.getItem('username'),
   onLogout = () => {}, // 로그아웃 버튼 클릭 시 호출할 함수
+  cartItem = null, // 현재 장바구니 항목 개수
 }) {
   return (
     <Navbar>
@@ -77,7 +78,7 @@ export default function NavBar({
           <NavItem href="/my-cart" className="cart-icon">
             <i className="fas fa-shopping-cart cart-icon__i" />
             <span className="badge badge-circle cart-item__cnt">
-              {localStorage.getItem('cartItem')}
+              {cartItem}
             </span>
           </NavItem>
         </Nav>
