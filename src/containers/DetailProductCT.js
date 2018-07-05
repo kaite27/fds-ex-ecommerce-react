@@ -32,7 +32,7 @@ export default class DetailProductCT extends React.Component {
               attrSKU,
               productMarketPrice,
               productUnitPrice,
-              subTotal,   
+              subTotal,
               total,
               salesTax,
               onPriceCalculate,

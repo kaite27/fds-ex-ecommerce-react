@@ -17,7 +17,6 @@ class SubscribesProvider extends Component {
         email: email,
       };
       await mallAPI.post('/subscribes', payload);
-      alert(`Posted!! ${email}`);
     } catch (e) {
       if (e.response && e.response.status === 400) {
         alert('Wrong type! Check you email address');
