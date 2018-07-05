@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 
 import DetailProductBreadcrumb from './DetailProductBreadcrumb';
+import DetailProductModal from './DetailProductModal';
 
 export default class DetailProduct extends Component {
   state = {
     inputValue: 1,
+    modalOpen: false,
   };
 
   colorRef = React.createRef();
@@ -37,6 +39,7 @@ export default class DetailProduct extends Component {
     e.preventDefault();
     const { onAddCart } = this.props;
     onAddCart(this.state.inputValue);
+    this.setState({ modalOpen: true });
   };
 
   render() {
@@ -238,6 +241,16 @@ export default class DetailProduct extends Component {
             </div>
           </div>
         </div>
+        {this.state.modalOpen ? (
+          <DetailProductModal
+            modalOpen={this.state.modalOpen}
+            inputValue={this.state.inputValue}
+            color={color}
+            size={size}
+            productTitle={productTitle}
+            productMarketPrice={productMarketPrice}
+          />
+        ) : null}
       </React.Fragment>
     );
   }

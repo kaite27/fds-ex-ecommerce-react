@@ -150,7 +150,7 @@ class DetailProductProvider extends React.Component {
       attributeId: parseInt(this.state.attributeId, 10),
       productTitle: this.state.productTitle + '',
       productDesc: this.state.productDesc + '',
-      size: parseInt(this.state.size, 10),
+      size: this.state.size,
       color: this.state.color + '',
       availableQtt: parseInt(this.state.quantity, 10),
       selectedQtt: parseInt(inputValue, 10),
@@ -161,13 +161,9 @@ class DetailProductProvider extends React.Component {
     const res = await mallAPI.get('/carts');
     for (let i = 0; i < res.data.length; i++) {
       if (res.data[i].attributeId === parseInt(this.state.attributeId, 10)) {
-        // console.log(
-        //   `${res.data[i].attributeId} ${parseInt(this.state.attributeId, 10)}`
-        // );
         duplicateAttr = true;
         result = true;
       } else {
-        // console.log(`${res.data[i].attributeId} ${this.state.attributeId}`);
         duplicateAttr = false;
       }
     }

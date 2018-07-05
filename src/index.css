@@ -10750,28 +10750,19 @@ section {
 }
 
 /* ---------- loading indicator ----------- */
-.root--loading {
+.full-box {
   display: block;
   position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.3);
-}
-
-.full-box {
-  position: fixed;
-  left: 50%;
-  top: 50%;
+  left: 93%;
+  top: 10%;
   z-index: 9999px;
 }
 
 .lds-roller {
   display: inline-block;
   position: relative;
-  width: 64px;
-  height: 64px;
+  width: 55px;
+  height: 55px;
 }
 
 .lds-roller div {
@@ -11248,6 +11239,7 @@ section {
 
 .list-group-item__size, .list-group-item__color {
   font-weight: 400;
+  text-transform: capitalize;
 }
 
 /* ------------ Subscribes ----------- */
@@ -11554,6 +11546,7 @@ section {
 .modal-quantity {
   display: inline-block;
   margin-right: 15px;
+  text-transform: capitalize;
 }
 
 .modal-sm {
@@ -11737,7 +11730,6 @@ section {
 }
 
 .product-cart:nth-child(2n) {
-  margin-top: -17px;
   background-color: #f6f4f4;
 }
 
@@ -11770,6 +11762,10 @@ section {
 
 .attribute-max:before {
   content: 'Remain Quantity : ';
+}
+
+.attribute-list-color, .attribute-list-size {
+  text-transform: capitalize;
 }
 
 /* Totals section */
@@ -11825,6 +11821,10 @@ section {
 
 .admin-add-product {
   margin-bottom: 30px;
+}
+
+.admin-add-product-modal {
+  top: 45%;
 }
 
 .form-add-product__send .label {
