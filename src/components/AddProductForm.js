@@ -9,7 +9,6 @@ export default class AddProductForm extends Component {
     productDesc: '',
     category: '',
     imageURL: '',
-    accSoldCnt: 0,
     published: false,
     loading: false,
   };
@@ -38,15 +37,13 @@ export default class AddProductForm extends Component {
       category: this.state.category,
       productUnitPrice: this.state.productUnitPrice,
       productMarketPrice: this.state.productMarketPrice,
+      accSoldCnt: 0,
     };
     try {
       this.setState({ loading: true });
       await mallAPI.post('/products', payload);
     } finally {
-      this.setState({
-        loading: false,
-        published: true,
-      });
+      this.setState({ published: true });
     }
   };
 
@@ -71,7 +68,7 @@ export default class AddProductForm extends Component {
                   <input
                     name="productTitle"
                     onChange={this.handleStateChange}
-                    disabled={this.state.published ? true : false}
+                    disabled={this.state.loading ? true : false}
                     className="input add-title"
                     type="text"
                     placeholder="Type title of this product"
@@ -86,7 +83,7 @@ export default class AddProductForm extends Component {
                   <textarea
                     name="productDesc"
                     onChange={this.handleStateChange}
-                    disabled={this.state.published ? true : false}
+                    disabled={this.state.loading ? true : false}
                     className="textarea add-desc"
                     placeholder="Type description of this product"
                     required
@@ -107,7 +104,7 @@ export default class AddProductForm extends Component {
                     className="add-category-options"
                     onChange={this.handleCategoryChange}
                     ref={this.categoryRef}
-                    disabled={this.state.published ? true : false}
+                    disabled={this.state.loading ? true : false}
                   >
                     <option className="add-category-option">Dress</option>
                     <option className="add-category-option">Shoes</option>
@@ -128,7 +125,7 @@ export default class AddProductForm extends Component {
                     name="imageURL"
                     onChange={this.handleStateChange}
                     className="input add-image"
-                    disabled={this.state.published ? true : false}
+                    disabled={this.state.loading ? true : false}
                     type="text"
                     placeholder="https://..."
                     data-toggle="tooltip"
@@ -171,7 +168,7 @@ export default class AddProductForm extends Component {
             </div>
           </form>
         </div>
-        <AddAttributeForm />
+        {this.state.published ? <AddAttributeForm /> : null}
       </React.Fragment>
     );
   }
