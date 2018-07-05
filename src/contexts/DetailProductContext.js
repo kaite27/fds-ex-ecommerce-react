@@ -142,29 +142,46 @@ class DetailProductProvider extends React.Component {
 
   addCart = async inputValue => {
     this.setState({ loading: true });
-    try {
-      const payload = {
-        userId: 1,
-        productId: parseInt(this.state.productId, 10),
-        attributeId: parseInt(this.state.attributeId, 10),
-        productTitle: this.state.productTitle + '',
-        productDesc: this.state.productDesc + '',
-        size: parseInt(this.state.size, 10),
-        color: this.state.color + '',
-        availableQtt: parseInt(this.state.quantity, 10),
-        selectedQtt: parseInt(inputValue, 10),
-        productMarketPrice: parseFloat(this.state.productMarketPrice, 2),
-        productUnitPrice: parseFloat(this.state.productUnitPrice, 2),
-        imageURL: this.state.imageURL + '',
-      };
+    let duplicateAttr = false;
+    let result = false;
+    const payload = {
+      userId: 1,
+      productId: parseInt(this.state.productId, 10),
+      attributeId: parseInt(this.state.attributeId, 10),
+      productTitle: this.state.productTitle + '',
+      productDesc: this.state.productDesc + '',
+      size: parseInt(this.state.size, 10),
+      color: this.state.color + '',
+      availableQtt: parseInt(this.state.quantity, 10),
+      selectedQtt: parseInt(inputValue, 10),
+      productMarketPrice: parseFloat(this.state.productMarketPrice, 2),
+      productUnitPrice: parseFloat(this.state.productUnitPrice, 2),
+      imageURL: this.state.imageURL + '',
+    };
+    const res = await mallAPI.get('/carts');
+    for (let i = 0; i < res.data.length; i++) {
+      if (res.data[i].attributeId === parseInt(this.state.attributeId, 10)) {
+        // console.log(
+        //   `${res.data[i].attributeId} ${parseInt(this.state.attributeId, 10)}`
+        // );
+        duplicateAttr = true;
+        result = true;
+      } else {
+        // console.log(`${res.data[i].attributeId} ${this.state.attributeId}`);
+        duplicateAttr = false;
+      }
+    }
+    console.log(`duplicate? ${result}`);
+    if (result) {
+      alert('already in cart!!');
+    } else {
       await mallAPI.post('/carts', payload);
-    } finally {
-      this.setState({ loading: false });
       localStorage.setItem(
         'cartItem',
         parseInt(localStorage.getItem('cartItem'), 10) + 1
       );
     }
+    this.setState({ loading: false });
   };
 
   render() {

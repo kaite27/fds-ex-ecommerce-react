@@ -37,11 +37,11 @@ class CartProvider extends React.Component {
           productMarketPrice: c.productMarketPrice,
           imageURL: c.imageURL,
         })),
+        loading: false,
       });
     } finally {
       this.priceCalculate();
       this.countCartedItem();
-      this.setState({ loading: false });
     }
   };
 
