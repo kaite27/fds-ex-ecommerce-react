@@ -186,6 +186,7 @@ export default class AddAttributeForm extends Component {
                   />
                 </div>
                 <button
+                  type="button"
                   onClick={this.handleRemoveAttribute(idx)}
                   className="button is-danger delete-circle"
                 >
