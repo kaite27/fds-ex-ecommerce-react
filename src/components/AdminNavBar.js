@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import AddProductList from './AddProductList';
 
@@ -13,25 +14,42 @@ export default class AdminNavBar extends Component {
           <div className="columns">
             <div className="column is-3 admin-menus">
               <ul className="list-group">
-                <li className="list-group-item list-group-item-action admin-menu admin-link-products">
-                  <a href="#">PRODUCTS</a>
-                </li>
-                <li className="list-group-item list-group-item-action admin-menu admin-link-add">
-                  <a href="#">ADD PRODUCT</a>
-                </li>
-                <li className="list-group-item list-group-item-action admin-menu admin-link-orders">
-                  <a href="#">ORDERS</a>
-                </li>
-                <li className="list-group-item list-group-item-action admin-menu admin-link-sales">
-                  <a href="#">SALES</a>
-                </li>
-                <li className="list-group-item list-group-item-action admin-menu admin-link-users">
-                  <a href="#">USERS</a>
-                </li>
-                <li className="list-group-item list-group-item-action admin-menu admin-link-setting">
-                  <a href="#">SETTING</a>
-                </li>
-                <li className="list-group-item list-group-item-action admin-menu admin-link-blink" />
+                <Link
+                  className="list-group-item list-group-item-action admin-menu"
+                  to="/admin"
+                >
+                  PRODUCTS
+                </Link>
+                <Link
+                  className="list-group-item list-group-item-action admin-menu"
+                  to="/admin"
+                >
+                  ADD PRODUCT
+                </Link>
+                <Link
+                  className="list-group-item list-group-item-action admin-menu"
+                  to="/admin"
+                >
+                  ORDERS
+                </Link>
+                <Link
+                  className="list-group-item list-group-item-action admin-menu"
+                  to="/admin"
+                >
+                  SALES
+                </Link>
+                <Link
+                  className="list-group-item list-group-item-action admin-menu"
+                  to="/admin"
+                >
+                  USERS
+                </Link>
+                <Link
+                  className="list-group-item list-group-item-action admin-menu"
+                  to="/admin"
+                >
+                  SETTING
+                </Link>
               </ul>
             </div>
             <div className="column is-9">
