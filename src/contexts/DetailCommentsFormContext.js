@@ -49,6 +49,7 @@ class DetailCommentProvider extends Component {
     }
     await this.fetchComments();
   };
+
   deleteComment = async id => {
     this.setState({
       loading: true,

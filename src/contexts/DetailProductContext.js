@@ -151,7 +151,7 @@ class DetailProductProvider extends React.Component {
         productDesc: this.state.productDesc + '',
         size: parseInt(this.state.size, 10),
         color: this.state.color + '',
-        availableQtt: parseInt(this.state.quantity),
+        availableQtt: parseInt(this.state.quantity, 10),
         selectedQtt: parseInt(inputValue, 10),
         productMarketPrice: parseFloat(this.state.productMarketPrice, 2),
         productUnitPrice: parseFloat(this.state.productUnitPrice, 2),

@@ -10977,7 +10977,7 @@ section {
 }
 
 .dropdown {
-  margin: 10px 0 0 160px;
+  margin: 10px 0 0;
 }
 
 .dropdown-menu {
@@ -11812,14 +11812,11 @@ section {
 
 .admin-menu {
   background-color: #28a745;
+  color: #fff !important;
 }
 
 .admin-menu:hover {
-  background-color: #7fc56f;
-}
-
-.admin-menu a {
-  color: #fff;
+  background-color: #66c473 !important;
 }
 
 .admin-content {
@@ -11830,12 +11827,8 @@ section {
   margin-bottom: 30px;
 }
 
-.admin-link-blink {
-  height: 100vh;
-}
-
-.admin-link-blink:hover {
-  background-color: #28a745;
+.form-add-product__send .label {
+  text-align: left !important;
 }
 
 .subtitle {
@@ -11895,7 +11888,7 @@ section {
 
 .attr-color {
   float: left;
-  width: 16%;
+  width: 14%;
 }
 
 .attr-size {
@@ -11915,7 +11908,7 @@ section {
 
 .attr-quantity {
   float: left;
-  width: 16%;
+  width: 13%;
 }
 
 .add-variants {
@@ -11929,6 +11922,10 @@ section {
 .attr-labels label {
   font-weight: 600;
   padding-bottom: 5px;
+}
+
+.delete-circle {
+  color: #fff;
 }
 
 footer {

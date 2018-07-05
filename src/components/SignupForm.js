@@ -13,12 +13,14 @@ export default class SignupForm extends Component {
   state = {
     value: '',
   };
+
   getValidationState() {
     const length = this.state.value.length;
     if (length >= 4) return 'success';
     else if (length > 0) return 'error';
     return null;
-  }
+  };
+
   handleChange = e => {
     this.setState({ value: e.target.value });
   };
@@ -51,10 +53,10 @@ export default class SignupForm extends Component {
                   onChange={this.handleChange}
                   value={this.state.value}
                   type="id"
-                  placeholder="please input ID"
+                  placeholder="Your ID .. "
                 />
                 <FormControl.Feedback />
-                <HelpBlock>Must be at least 4 digits.</HelpBlock>
+                <HelpBlock>Must be at least 4 characters.</HelpBlock>
               </Col>
             </FormGroup>
             <FormGroup controlId="formHorizontalPassword">
@@ -66,7 +68,7 @@ export default class SignupForm extends Component {
                     this.passwordRef = ref;
                   }}
                   type="password"
-                  placeholder="please input Password"
+                  placeholder="Password .."
                 />
               </Col>
             </FormGroup>
