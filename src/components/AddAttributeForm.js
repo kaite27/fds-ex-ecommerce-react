@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Modal, Button } from 'react-bootstrap';
+import mallAPI from '../mallAPI';
 
 export default class AddAttributeForm extends Component {
   state = {
@@ -14,6 +16,7 @@ export default class AddAttributeForm extends Component {
       },
     ],
     loading: false,
+    published: false,
   };
 
   handleAttributeChangeAttrSKU = idx => evt => {
@@ -87,11 +90,45 @@ export default class AddAttributeForm extends Component {
     });
   };
 
+  handlePostAttribute = async e => {
+    e.preventDefault();
+    this.setState({ loading: true, published: true });
+    const res = await mallAPI.get('/products?_sort=id&_order=desc&_limit=1');
+    const productId = res.data.map(p => p.id);
+    for (let i = 0; i < this.state.attCount; i++) {
+      let a = 'false';
+      if (i === 0) {
+        a = 'true';
+      }
+      const payload = {
+        attrSKU: this.state.attributes[i].attrSKU,
+        color: this.state.attributes[i].color,
+        size: this.state.attributes[i].size,
+        productMarketPrice: parseFloat(
+          this.state.attributes[i].productMarketPrice,
+          2
+        ),
+        productUnitPrice: parseFloat(
+          this.state.attributes[i].productUnitPrice,
+          2
+        ),
+        quantity: parseInt(this.state.attributes[i].quantity, 10),
+        productId: parseInt(productId, 10),
+        defaultAttr: a,
+      };
+      await mallAPI.post('/attributes', payload);
+    }
+    this.setState({ loading: false });
+  };
+
   render() {
     return (
       <div className="add-variants">
         <p className="add-subtitle title is-3">Product Variants</p>
-        <form className="form-add-product__send">
+        <form
+          className="form-add-product__send"
+          onSubmit={this.handlePostAttribute}
+        >
           <div className="form-container">
             <div className="column-labels attr-labels">
               <label className="attr-sku">SKU #</label>
@@ -110,6 +147,7 @@ export default class AddAttributeForm extends Component {
                     onChange={this.handleAttributeChangeAttrSKU(idx)}
                     className="input attr-input attr-sku__input"
                     placeholder="SKU number"
+                    disabled={this.state.published ? true : false}
                     required
                     data-toggle="tooltip"
                     data-placement="bottom"
@@ -123,6 +161,7 @@ export default class AddAttributeForm extends Component {
                     onChange={this.handleAttributeChangeColor(idx)}
                     className="input attr-input  attr-sku__color"
                     placeholder="One of colours"
+                    disabled={this.state.published ? true : false}
                     required
                     data-toggle="tooltip"
                     data-placement="bottom"
@@ -136,6 +175,7 @@ export default class AddAttributeForm extends Component {
                     onChange={this.handleAttributeChangeSize(idx)}
                     className="input attr-input  attr-sku__size"
                     placeholder="One of sizes"
+                    disabled={this.state.published ? true : false}
                     required
                     data-toggle="tooltip"
                     data-placement="bottom"
@@ -151,6 +191,7 @@ export default class AddAttributeForm extends Component {
                     placeholder="Unit price"
                     step="0.01"
                     data-number-to-fixed="2"
+                    disabled={this.state.published ? true : false}
                     required
                     data-toggle="tooltip"
                     data-placement="bottom"
@@ -165,6 +206,7 @@ export default class AddAttributeForm extends Component {
                     className="input attr-input  attr-sku__market-price"
                     placeholder="Market price"
                     required
+                    disabled={this.state.published ? true : false}
                     step="0.01"
                     data-number-to-fixed="2"
                     data-toggle="tooltip"
@@ -179,6 +221,7 @@ export default class AddAttributeForm extends Component {
                     onChange={this.handleAttributeChangeQuantity(idx)}
                     className="input attr-input  attr-sku__quantity"
                     placeholder="Quantity"
+                    disabled={this.state.published ? true : false}
                     required
                     data-toggle="tooltip"
                     data-placement="bottom"
@@ -188,7 +231,13 @@ export default class AddAttributeForm extends Component {
                 <button
                   type="button"
                   onClick={this.handleRemoveAttribute(idx)}
-                  className="button is-danger delete-circle"
+                  className={
+                    this.state.attCount <= 1
+                      ? 'button is-danger delete-circle is-static'
+                      : this.state.published
+                        ? 'button is-danger delete-circle is-static'
+                        : 'button is-danger delete-circle'
+                  }
                 >
                   -
                 </button>
@@ -200,7 +249,11 @@ export default class AddAttributeForm extends Component {
                   <button
                     type="button"
                     onClick={this.handleAddAttribute}
-                    className="button is-info add-reset-btn"
+                    className={
+                      this.state.loading
+                        ? 'button is-info add-reset-btn is-loading'
+                        : 'button is-info add-reset-btn'
+                    }
                   >
                     + Add more variant
                   </button>
@@ -208,10 +261,34 @@ export default class AddAttributeForm extends Component {
                 <div className="control">
                   <button
                     type="submit"
-                    className="button is-success add-reset-btn"
+                    className={
+                      this.state.loading
+                        ? 'button is-success add-reset-btn is-loading'
+                        : 'button is-success add-reset-btn'
+                    }
                   >
                     Publish product
                   </button>
+                  <Modal
+                    show={
+                      this.state.published && !this.state.loading ? true : false
+                    }
+                    className="admin-add-product-modal"
+                  >
+                    <Modal.Header>
+                      <Modal.Title>
+                        Attribute(s) is(are) successfully published!{' '}
+                      </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Footer>
+                      <Button href="/product" bsStyle="success">
+                        View Product Page
+                      </Button>
+                      <Button href="/admin" bsStyle="primary">
+                        Add New Product
+                      </Button>
+                    </Modal.Footer>
+                  </Modal>
                 </div>
               </div>
             </div>
