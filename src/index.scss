@@ -1097,25 +1097,16 @@ section {
   }
   &-menu {
     background-color: $color-green;
+    color: #fff !important;
     &:hover {
-      background-color: rgb(127, 197, 111);
-    }
-    a {
-      color: #fff;
+      background-color: rgb(102, 196, 115) !important;
     }
   }
   &-content {
     padding: 3% 5%;
   }
   &-add-product {
-    // background-color: red;
     margin-bottom: 30px;
-  }
-  &-link-blink {
-    height: 100vh;
-    &:hover {
-      background-color: $color-green;
-    }
   }
 }
 
