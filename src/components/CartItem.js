@@ -33,14 +33,14 @@ export default class CartItem extends Component {
     });
   };
 
-  handleDeleteItem = async e => {
+  handleDeleteItem = e => {
     e.preventDefault();
-    try {
+
+    this.handleModalOpen();
+    setTimeout(async () => {
       const { deleteCartItem, id } = this.props;
       await deleteCartItem(id);
-    } finally {
-      this.handleModalOpen();
-    }
+    }, 2000);
   };
 
   render() {
