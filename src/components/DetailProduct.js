@@ -37,7 +37,7 @@ export default class DetailProduct extends Component {
     e.preventDefault();
     const { onAddCart } = this.props;
     onAddCart(this.state.inputValue);
-  }
+  };
 
   render() {
     const {

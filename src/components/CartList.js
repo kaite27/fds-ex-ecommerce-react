@@ -70,9 +70,9 @@ export default class CartList extends Component {
                   <div className="cart__login-required clearfix">
                     <p className="cart__text">Login is required!</p>
                     <div className="cart__div-divied">
-                      <p>First visit? Sign in today!</p>
-                      <Button href="/login" bsStyle="primary">
-                        Sign In
+                      <p>First visit? Sign up today!</p>
+                      <Button href="/register" bsStyle="primary">
+                        Sign Up
                       </Button>
                     </div>
                     <div className="cart__div-divied">

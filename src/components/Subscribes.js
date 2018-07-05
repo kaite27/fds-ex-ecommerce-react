@@ -25,7 +25,7 @@ export default function Subscribes() {
             <SubscribesConsumer>
               {({ loading, sendEmail }) =>
                 loading ? (
-                  <LoadingBox /> // required css!!
+                  <div>Sending...</div> // required css!!
                 ) : (
                   <SubscribesForm
                     onSubscribe={async email => {
