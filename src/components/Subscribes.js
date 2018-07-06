@@ -1,7 +1,6 @@
 import React from 'react';
 
 import SubscribesForm from './SubscribesForm';
-import LoadingBox from '../components/LoadingBox';
 import {
   SubscribesProvider,
   SubscribesConsumer,
