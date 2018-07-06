@@ -36,7 +36,6 @@ class BestSellingProvider extends React.Component {
     this.setState({
       products: bestProducts,
     });
-    console.log(this.state.products);
   };
   async componentDidMount() {
     this.setState({ loading: true });
