@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import CartItem from './CartItem';
+import LoadingBox from './LoadingBox';
 
 import { Button } from 'react-bootstrap';
 
@@ -26,6 +27,7 @@ export default class CartList extends Component {
       total = 0.0,
       deleteCartItem = () => {},
       updateSelectedQtt = () => {},
+      loading = null,
     } = this.props;
 
     return (
@@ -82,7 +84,7 @@ export default class CartList extends Component {
                       </Button>
                     </div>
                   </div>
-                ) : localStorage.getItem('cartItem') > 0 ? (
+                ) : loading ? <LoadingBox /> : localStorage.getItem('cartItem') > 0 ? (
                   carts.map(cart => (
                     <CartItem
                       inputChecked={this.state.inputChecked}
