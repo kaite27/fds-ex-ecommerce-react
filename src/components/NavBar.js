@@ -36,19 +36,65 @@ export default function NavBar({
             id="basic-nav-dropdown"
             className="dropdown-menu"
           >
-            <MenuItem className="dropdown-item offScreen" eventKey={3.1}>
+            <MenuItem
+              className={
+                localStorage.getItem('userId') === '1'
+                  ? 'dropdown-item'
+                  : 'dropdown-item offScreen'
+              }
+              eventKey={3.1}
+              onClick={() => alert('Sorry this function will be comming soon')}
+            >
               Manage Site
             </MenuItem>
-            <MenuItem className="dropdown-item" eventKey={3.2} href="/register">
-              Sign in
+            <MenuItem
+              className={
+                localStorage.getItem('userId') === 1
+                  ? 'dropdown-item'
+                  : 'dropdown-item offScreen'
+              }
+              eventKey={3.2}
+              href="/register"
+              onClick={() => onLogout()}
+            >
+              Sign up
             </MenuItem>
-            <MenuItem className="dropdown-item" eventKey={3.3}>
+            <MenuItem
+              className="dropdown-item"
+              eventKey={3.3}
+              onClick={() => alert('Sorry this function will be comming soon')}
+            >
               My Orders
             </MenuItem>
-            <MenuItem className="dropdown-item" eventKey={3.4}>
+            <MenuItem
+              className={
+                localStorage.getItem('userId') === '1'
+                  ? 'dropdown-item offScreen'
+                  : 'dropdown-item'
+              }
+              eventKey={3.4}
+            >
               Shopping Cart
             </MenuItem>
-            <MenuItem className="dropdown-item offScreen" eventKey={3.5}>
+            <MenuItem
+              className={
+                localStorage.getItem('userId') === '1'
+                  ? 'dropdown-item'
+                  : 'dropdown-item offScreen'
+              }
+              eventKey={3.8}
+              href="/admin"
+            >
+              Add New Product
+            </MenuItem>
+            <MenuItem
+              className={
+                localStorage.getItem('userId') === 1
+                  ? 'dropdown-item'
+                  : 'dropdown-item offScreen'
+              }
+              eventKey={3.5}
+            >
               Sales Report
             </MenuItem>
             <MenuItem divider />
