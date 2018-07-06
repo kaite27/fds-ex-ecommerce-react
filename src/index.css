@@ -11202,10 +11202,22 @@ section {
 
 .new-products-items__title {
   font-size: 1.3rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  word-wrap: break-word;
+  line-height: 30px;
+  height: 65px;
 }
 
 .new-products-items__card {
   margin: 7px 0 0;
+}
+
+.new-products-items-badge {
+  vertical-align: super !important;
 }
 
 .list-group-item {
@@ -11297,6 +11309,14 @@ section {
 
 .product-page__title {
   font-size: 1.3rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  word-wrap: break-word;
+  line-height: 30px;
+  height: 65px;
 }
 
 .product-page__card {
@@ -11812,7 +11832,7 @@ section {
 }
 
 .admin-menu:hover {
-  background-color: #66c473 !important;
+  background-color: rgba(102, 196, 115, 0.849) !important;
 }
 
 .admin-content {
@@ -11824,7 +11844,7 @@ section {
 }
 
 .admin-add-product-modal {
-  top: 45%;
+  top: 35%;
 }
 
 .form-add-product__send .label {
