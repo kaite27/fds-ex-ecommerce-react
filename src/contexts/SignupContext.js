@@ -15,8 +15,7 @@ class SignupProvider extends Component {
         username: username,
         password: password,
       };
-      let res = await mallAPI.post('/users/register', payload);
-      console.log(res.data);
+      await mallAPI.post('/users/register', payload);
       const loginRes = await mallAPI.post('/users/login', payload);
 
       localStorage.setItem('token', loginRes.data.token);
