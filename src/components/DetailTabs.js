@@ -13,7 +13,7 @@ export default function DetailTab({ comments = [] }) {
             <Tab eventKey={1} title="Detail">
               <div className="product-detail-img">
                 <img
-                  src="http://image.ticketmonster.co.kr/deals/2018/05/30/1145577766/1145577766_product_main_0a2e0_1527660426production.jpg"
+                  src="http://image.ticketmonster.co.kr/deals/2018/07/05/1285580786/1285580786_product_main_5f37d_1530771249production.jpg"
                   alt="Main Product"
                 />
               </div>
