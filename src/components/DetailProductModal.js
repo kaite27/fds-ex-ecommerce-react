@@ -45,7 +45,7 @@ export default class DetailProductModal extends Component {
           </div>
           <Modal.Footer>
             <Button onClick={this.handleClose}>Close</Button>
-            <Button href="/cart" bsStyle="primary">
+            <Button href="/my-cart" bsStyle="primary">
               View Cart
             </Button>
           </Modal.Footer>
