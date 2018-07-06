@@ -75,8 +75,8 @@ class DetailProductProvider extends React.Component {
         productUnitPrice: res.data.map(p => p.productUnitPrice),
         subTotal: res.data.map(p => p.productMarketPrice),
         total: (
-          0.06625 *
-          (res.data.map(p => p.productMarketPrice) + 1)
+          res.data.map(p => p.productMarketPrice) *
+          (0.06625 + 1)
         ).toFixed(2),
         salesTax: (res.data.map(p => p.productMarketPrice) * 0.06625).toFixed(
           2
@@ -167,7 +167,6 @@ class DetailProductProvider extends React.Component {
         duplicateAttr = false;
       }
     }
-    console.log(`duplicate? ${result}`);
     if (result) {
       alert('already in cart!!');
     } else {
