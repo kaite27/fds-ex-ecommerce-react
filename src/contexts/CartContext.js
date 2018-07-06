@@ -71,7 +71,6 @@ class CartProvider extends React.Component {
 
   deleteCartItem = async id => {
     this.setState({
-      loading: true,
       carts: this.state.carts.filter(t => t.id !== id),
     });
     try {
@@ -79,7 +78,6 @@ class CartProvider extends React.Component {
       await this.loadCartItem();
     } finally {
       this.countCartedItem();
-      this.setState({ loading: false });
     }
   };
 
