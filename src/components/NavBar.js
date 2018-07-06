@@ -50,8 +50,8 @@ export default function NavBar({
             <MenuItem
               className={
                 localStorage.getItem('userId') === 1
-                  ? 'dropdown-item'
-                  : 'dropdown-item offScreen'
+                  ? 'dropdown-item offScreen'
+                  : 'dropdown-item'
               }
               eventKey={3.2}
               href="/register"
