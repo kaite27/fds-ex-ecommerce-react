@@ -29,6 +29,7 @@ export default class DetailProductModal extends Component {
                   <img
                     src="https://image.freepik.com/free-photo/portrait-of-a-tender-young-bride-makeup-and-hairstyle-for-wedding-long-blonde-hair_8353-6144.jpg"
                     className="modal-img"
+                    alt="productTitle"
                   />
                 </div>
               </div>
@@ -45,7 +46,7 @@ export default class DetailProductModal extends Component {
           </div>
           <Modal.Footer>
             <Button onClick={this.handleClose}>Close</Button>
-            <Button href="/cart" bsStyle="primary">
+            <Button href="/my-cart" bsStyle="primary">
               View Cart
             </Button>
           </Modal.Footer>
