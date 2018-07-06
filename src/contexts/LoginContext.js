@@ -7,7 +7,9 @@ const { Provider, Consumer } = React.createContext();
 class LoginProvider extends Component {
   state = {
     success: false,
+    loading: false,
   };
+
   login = async (username, password) => {
     if (username === '' || password === '') {
       alert('please input ID or Password');
@@ -17,6 +19,8 @@ class LoginProvider extends Component {
           username: username,
           password: password,
         };
+
+        this.setState({ loading: true });
         const res = await mallAPI.post('/users/login', payload);
 
         localStorage.setItem('token', res.data.token);
@@ -30,8 +34,6 @@ class LoginProvider extends Component {
           id: c.id,
         })).length;
         localStorage.setItem('cartItem', cartItem);
-
-        this.setState({ success: true });
       } catch (e) {
         if (e.response && e.response.status === 400) {
           alert('Invalid username and password!');
@@ -39,6 +41,8 @@ class LoginProvider extends Component {
         } else {
           alert('Network error. Please try again.');
         }
+      } finally {
+        this.setState({ success: true, loading: false });
       }
     }
   };
@@ -48,6 +52,7 @@ class LoginProvider extends Component {
       login: this.login,
       logout: this.logout,
       success: this.state.success,
+      loading: this.state.loading,
     };
 
     return <Provider value={value}>{this.props.children}</Provider>;
