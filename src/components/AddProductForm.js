@@ -51,7 +51,7 @@ export default class AddProductForm extends Component {
     e.preventDefault();
     alert('This function will be comming soon!');
   };
-
+  
   render() {
     return (
       <React.Fragment>
@@ -72,10 +72,8 @@ export default class AddProductForm extends Component {
                     className="input add-title"
                     type="text"
                     placeholder="Type title of this product"
-                    data-toggle="tooltip"
-                    title="Not too long but not too short"
-                    data-placement="right"
                     required
+                    maxLength="50"
                   />
                 </div>
                 <label className="label">Product Description</label>
@@ -84,12 +82,9 @@ export default class AddProductForm extends Component {
                     name="productDesc"
                     onChange={this.handleStateChange}
                     disabled={this.state.loading ? true : false}
-                    className="textarea add-desc"
                     placeholder="Type description of this product"
+                    className="textarea add-desc"
                     required
-                    data-toggle="tooltip"
-                    title="Not too long but not too short as detail as you"
-                    data-placement="right"
                   />
                 </div>
               </div>
@@ -111,13 +106,14 @@ export default class AddProductForm extends Component {
                     <option className="add-category-option">Coat</option>
                     <option className="add-category-option">Bags</option>
                     <option className="add-category-option">Shirt</option>
+                    <option className="add-category-option">Accessories</option>
                   </select>
                 </div>
               </div>
             </div>
             <div className="divider" />
-            <div class="row-images">
-              <p class="add-subtitle title is-3">Product Images</p>
+            <div className="row-images">
+              <p className="add-subtitle title is-3">Product Images</p>
               <div className="file">
                 <label className="add-image-label label">Product Image</label>
                 <div className="control">
@@ -128,9 +124,6 @@ export default class AddProductForm extends Component {
                     disabled={this.state.loading ? true : false}
                     type="text"
                     placeholder="https://..."
-                    data-toggle="tooltip"
-                    title="URL plz.."
-                    data-placement="right"
                     required
                   />
                 </div>
