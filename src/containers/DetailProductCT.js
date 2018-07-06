@@ -39,9 +39,11 @@ export default class DetailProductCT extends React.Component {
               onUpdateColor,
               onUpdateSize,
               onAddCart,
+              result,
             }) => (
               <React.Fragment>
                 <DetailProduct
+                  result={result}
                   colors={colors}
                   sizes={sizes}
                   productId={productId}

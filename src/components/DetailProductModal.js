@@ -17,7 +17,9 @@ export default class DetailProductModal extends Component {
       color,
       size,
       inputValue,
+      imageURL,
     } = this.props;
+
     return (
       <div className="static-modal">
         <Modal onHide={this.handleClose} show={this.state.modalOpen}>
@@ -27,7 +29,7 @@ export default class DetailProductModal extends Component {
               <div className="column is-4">
                 <div className="modal-image-box">
                   <img
-                    src="https://image.freepik.com/free-photo/portrait-of-a-tender-young-bride-makeup-and-hairstyle-for-wedding-long-blonde-hair_8353-6144.jpg"
+                    src={imageURL}
                     className="modal-img"
                     alt="productTitle"
                   />

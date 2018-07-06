@@ -60,6 +60,7 @@ export default class DetailProduct extends Component {
       subTotal,
       total,
       salesTax,
+      result,
     } = this.props;
 
     return (
@@ -241,12 +242,13 @@ export default class DetailProduct extends Component {
             </div>
           </div>
         </div>
-        {this.state.modalOpen ? (
+        {result === false && this.state.modalOpen ? (
           <DetailProductModal
             modalOpen={this.state.modalOpen}
             inputValue={this.state.inputValue}
             color={color}
             size={size}
+            imageURL={imageURL}
             productTitle={productTitle}
             productMarketPrice={productMarketPrice}
           />

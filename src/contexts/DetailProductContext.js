@@ -27,6 +27,7 @@ class DetailProductProvider extends React.Component {
     subTotal: 0,
     total: 0,
     salesTax: 0,
+    result: false,
   };
 
   // reviews = [];
@@ -142,15 +143,13 @@ class DetailProductProvider extends React.Component {
 
   addCart = async inputValue => {
     this.setState({ loading: true });
-    let duplicateAttr = false;
-    let result = false;
     const payload = {
       userId: 1,
       productId: parseInt(this.state.productId, 10),
       attributeId: parseInt(this.state.attributeId, 10),
       productTitle: this.state.productTitle + '',
       productDesc: this.state.productDesc + '',
-      size: this.state.size,
+      size: this.state.size + '',
       color: this.state.color + '',
       availableQtt: parseInt(this.state.quantity, 10),
       selectedQtt: parseInt(inputValue, 10),
@@ -161,13 +160,10 @@ class DetailProductProvider extends React.Component {
     const res = await mallAPI.get('/carts');
     for (let i = 0; i < res.data.length; i++) {
       if (res.data[i].attributeId === parseInt(this.state.attributeId, 10)) {
-        duplicateAttr = true;
-        result = true;
-      } else {
-        duplicateAttr = false;
+        this.setState({ result: true });
       }
     }
-    if (result) {
+    if (this.state.result) {
       alert('already in cart!!');
     } else {
       await mallAPI.post('/carts', payload);
