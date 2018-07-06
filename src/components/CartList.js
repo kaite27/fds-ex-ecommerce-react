@@ -28,6 +28,7 @@ export default class CartList extends Component {
       deleteCartItem = () => {},
       updateSelectedQtt = () => {},
       loading = null,
+      changing = null,
     } = this.props;
 
     return (
@@ -84,13 +85,16 @@ export default class CartList extends Component {
                       </Button>
                     </div>
                   </div>
-                ) : loading ? <LoadingBox /> : localStorage.getItem('cartItem') > 0 ? (
+                ) : loading ? (
+                  <LoadingBox />
+                ) : localStorage.getItem('cartItem') > 0 ? (
                   carts.map(cart => (
                     <CartItem
                       inputChecked={this.state.inputChecked}
                       deleteCartItem={deleteCartItem}
                       updateSelectedQtt={updateSelectedQtt}
                       key={cart.id}
+                      changing={changing}
                       {...cart}
                     />
                   ))

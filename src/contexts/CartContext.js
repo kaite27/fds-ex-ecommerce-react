@@ -9,6 +9,7 @@ class CartProvider extends React.Component {
     carts: [],
     cartedItem: 0,
     loading: false,
+    changing: false,
     subTotal: 0,
     salesTax: 0,
     total: 0,
@@ -53,7 +54,7 @@ class CartProvider extends React.Component {
   };
 
   reloadSelectedQtt = async () => {
-    this.setState({ loading: true });
+    this.setState({ changing: true });
     try {
       const res = await mallAPI.get(`/carts`);
       this.setState({
@@ -64,7 +65,7 @@ class CartProvider extends React.Component {
       });
     } finally {
       this.priceCalculate();
-      this.setState({ loading: false });
+      this.setState({ changing: false });
     }
   };
 
@@ -96,9 +97,7 @@ class CartProvider extends React.Component {
   };
 
   updateSelectedQtt = async (quantity, id) => {
-    this.setState({
-      loading: true,
-    });
+    this.setState({ changing: true });
     try {
       const payload = {
         selectedQtt: parseInt(quantity, 10),
@@ -107,7 +106,7 @@ class CartProvider extends React.Component {
       await this.reloadSelectedQtt();
     } finally {
       this.priceCalculate();
-      this.setState({ loading: false });
+      this.setState({ changing: false });
     }
   };
 

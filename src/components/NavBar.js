@@ -49,7 +49,7 @@ export default function NavBar({
             </MenuItem>
             <MenuItem
               className={
-                localStorage.getItem('userId') === 1
+                localStorage.getItem('userId') === '1'
                   ? 'dropdown-item offScreen'
                   : 'dropdown-item'
               }
@@ -89,7 +89,7 @@ export default function NavBar({
             </MenuItem>
             <MenuItem
               className={
-                localStorage.getItem('userId') === 1
+                localStorage.getItem('userId') === '1'
                   ? 'dropdown-item'
                   : 'dropdown-item offScreen'
               }

@@ -45,6 +45,7 @@ export default class CartItem extends Component {
 
   render() {
     const {
+      changing,
       productId,
       productMarketPrice, // product salse price
       productUnitPrice,
@@ -100,7 +101,14 @@ export default class CartItem extends Component {
               title="No more!"
               onChange={this.handleChange}
             />
-            <button type="submit" className="button is-small update-product">
+            <button
+              type="submit"
+              className={
+                changing
+                  ? 'is-loading button is-small update-product'
+                  : 'button is-small update-product'
+              }
+            >
               Update
             </button>
             <div className="attribute-max">{availableQtt}</div>

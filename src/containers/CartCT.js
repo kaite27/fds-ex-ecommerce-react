@@ -18,11 +18,13 @@ export default class CartCT extends React.Component {
             updateSelectedQtt,
             deleteCartItem,
             loading,
+            changing,
           }) =>
             <CartList
               id={id}
               as={Link}
               loading={loading}
+              changing={changing}
               total={total}
               salesTax={salesTax}
               subTotal={subTotal}
