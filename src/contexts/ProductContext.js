@@ -25,6 +25,58 @@ class ProductProvider extends React.Component {
     });
   };
 
+  productSearch = async query => {
+    const res = await mallAPI.get(
+      '/products?_embed=attributes&_sort=id&_order=desc'
+    );
+    const attrRes = await mallAPI.get(`/attributes`);
+    const arr = res.data.map(p => ({
+      id: p.id,
+      title: p.productTitle,
+      desc: p.productDesc,
+      category: p.category,
+      imageURL: p.imageURL,
+      accSoldCnt: p.accSoldCnt,
+      unitPrice: attrRes.data
+        .map(a => {
+          return a.defaultAttr === 'true' && a.productId === p.id
+            ? a.productUnitPrice
+            : null;
+        })
+        .filter(i => i !== null),
+      marketPrice: attrRes.data
+        .map(a => {
+          return a.defaultAttr === 'true' && a.productId === p.id
+            ? a.productMarketPrice
+            : null;
+        })
+        .filter(i => i !== null),
+      colors: attrRes.data
+        .map(a => {
+          return a.productId === p.id ? a.color : null;
+        })
+        .filter(i => i !== null)
+        .filter(function(item, i, arr) {
+          return i === arr.indexOf(item);
+        }),
+      sizes: attrRes.data
+        .map(a => {
+          return a.productId === p.id ? a.size : null;
+        })
+        .filter(i => i !== null)
+        .filter(function(item, i, arr) {
+          return i === arr.indexOf(item);
+        }),
+    }));
+    this.setState({
+      products: arr.filter(p => {
+        if (p.title.match(query)) {
+          return p;
+        }
+      }),
+    });
+  };
+
   loadProducts = async category => {
     this.setState({ loading: true });
     try {
@@ -83,6 +135,7 @@ class ProductProvider extends React.Component {
     const value = {
       ...this.state,
       onCategory: this.handleChangeCategory,
+      productSearch: this.productSearch,
     };
     return <Provider value={value}>{this.props.children}</Provider>;
   }
