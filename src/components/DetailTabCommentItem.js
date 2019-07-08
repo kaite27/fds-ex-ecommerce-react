@@ -21,7 +21,7 @@ export default class DetailTabCommentItem extends React.Component {
   }
 
   render() {
-    const { body, rating, userId, date, id, onDelete } = this.props;
+    const { body, rating, username, date, id, onDelete } = this.props;
     return (
       <React.Fragment>
         <div className="review-list-box">
@@ -29,7 +29,7 @@ export default class DetailTabCommentItem extends React.Component {
             <span className="review-date">{date}</span>
           </div>
           <div className="review-reviewer-box">
-            <span className="review-viewer">{userId}</span>
+            <span className="review-viewer">{username}</span>
           </div>
           <div className="review-rate-box">
             <span className="review-rate">{rating}</span>
