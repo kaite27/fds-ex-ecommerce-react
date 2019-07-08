@@ -42,8 +42,19 @@ export default function NavBar({
                   ? 'dropdown-item'
                   : 'dropdown-item offScreen'
               }
+              eventKey={3.8}
+              href="/admin"
+            >
+              Add New Product
+            </MenuItem>
+            <MenuItem
+              className={
+                localStorage.getItem('userId') === '1'
+                  ? 'dropdown-item'
+                  : 'dropdown-item offScreen'
+              }
               eventKey={3.1}
-              onClick={() => alert('Sorry this function will be comming soon')}
+              href="/admin"
             >
               Manage Site
             </MenuItem>
@@ -58,6 +69,16 @@ export default function NavBar({
               onClick={() => onLogout()}
             >
               Sign up
+            </MenuItem>
+            <MenuItem
+              className={
+                localStorage.getItem('userId') === '1'
+                  ? 'dropdown-item'
+                  : 'dropdown-item offScreen'
+              }
+              eventKey={3.5}
+            >
+              Sales Report
             </MenuItem>
             <MenuItem
               className="dropdown-item"
@@ -75,27 +96,6 @@ export default function NavBar({
               eventKey={3.4}
             >
               Shopping Cart
-            </MenuItem>
-            <MenuItem
-              className={
-                localStorage.getItem('userId') === '1'
-                  ? 'dropdown-item'
-                  : 'dropdown-item offScreen'
-              }
-              eventKey={3.8}
-              href="/admin"
-            >
-              Add New Product
-            </MenuItem>
-            <MenuItem
-              className={
-                localStorage.getItem('userId') === '1'
-                  ? 'dropdown-item'
-                  : 'dropdown-item offScreen'
-              }
-              eventKey={3.5}
-            >
-              Sales Report
             </MenuItem>
             <MenuItem divider />
             <MenuItem
