@@ -9,6 +9,7 @@ import {
   DetailCommentConsumer,
 } from '../contexts/DetailCommentsFormContext.js';
 import DetailProduct from '../components/DetailProduct';
+import DetailProductBreadcrumb from '../components/DetailProductBreadcrumb';
 import DetailTabs from '../components/DetailTabs';
 
 export default class DetailProductCT extends React.Component {

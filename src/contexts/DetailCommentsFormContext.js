@@ -35,7 +35,7 @@ class DetailCommentProvider extends Component {
         rating: rating,
         date: now.toDateString(),
         productId: parseInt(this.props.id, 10),
-        userId: localStorage.getItem('userId'),
+        username: localStorage.getItem('username'),
       };
       await mallAPI.post('/reviews', payload);
     } catch (e) {
