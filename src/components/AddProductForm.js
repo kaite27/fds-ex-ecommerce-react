@@ -51,7 +51,7 @@ export default class AddProductForm extends Component {
     e.preventDefault();
     alert('This function will be comming soon!');
   };
-  
+
   render() {
     return (
       <React.Fragment>
@@ -114,6 +114,9 @@ export default class AddProductForm extends Component {
             <div className="divider" />
             <div className="row-images">
               <p className="add-subtitle title is-3">Product Images</p>
+              <p className="add-subtitle__p">
+                To simplify, insert image URL below
+              </p>
               <div className="file">
                 <label className="add-image-label label">Product Image</label>
                 <div className="control">
