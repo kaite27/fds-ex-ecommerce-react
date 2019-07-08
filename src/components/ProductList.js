@@ -26,7 +26,7 @@ export default class ProductList extends React.Component {
                       <input
                         className="input search-bar"
                         type="text"
-                        placeholder="search"
+                        placeholder="ex) clothes chain Necklace .."
                         value={query}
                         onChange={e => onQueryChange(e.target.value)}
                       />
