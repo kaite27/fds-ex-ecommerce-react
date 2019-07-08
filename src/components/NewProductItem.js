@@ -12,11 +12,13 @@ export default function NewProductItem({
     <React.Fragment>
       <div className="new-products-items card">
         <div className="new-products-img">
-          <img
-            className="product-page__img--main"
-            alt="New Item 01"
-            src={imageURL}
-          />
+          <Link to={`/product/${id}`}>
+            <img
+              className="product-page__img--main"
+              alt="New Item 01"
+              src={imageURL}
+            />
+          </Link>
         </div>
         <div className="new-products-items__card">
           <span className="new-products-items__title">{title}</span>
