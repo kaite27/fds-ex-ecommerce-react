@@ -96,7 +96,7 @@ export default class AddAttributeForm extends Component {
     const res = await mallAPI.get('/products?_sort=id&_order=desc&_limit=1');
     const productId = res.data.map(p => p.id);
     for (let i = 0; i < this.state.attCount; i++) {
-      let a = 'false';
+      let a = 'false'; // to chose the first attr as a defaultAttr
       if (i === 0) {
         a = 'true';
       }
