@@ -26,7 +26,7 @@ export default class LoginForm extends Component {
                     this.usernameRef = ref;
                   }}
                   type="id"
-                  placeholder="ID"
+                  placeholder="admin ;Use it for test purpose only"
                 />
               </Col>
             </FormGroup>
@@ -40,7 +40,7 @@ export default class LoginForm extends Component {
                     this.passwordRef = ref;
                   }}
                   type="password"
-                  placeholder="Password"
+                  placeholder="0"
                 />
               </Col>
             </FormGroup>
