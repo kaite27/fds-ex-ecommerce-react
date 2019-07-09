@@ -1,6 +1,6 @@
 @import '../node_modules/bulma/bulma.sass';
 $color-blue: dodgerblue;
-$color-green: #28a745;
+$color-green: #81a728;
 $color-red: #dc3545;
 $color-yello: #ffc107;
 $color-grey: #6c757d;
@@ -769,6 +769,7 @@ section {
 
     &__title {
       font-size: 2.2rem;
+      line-height: 2.3rem;
       margin: 7px 0;
     }
 
@@ -867,7 +868,7 @@ section {
   margin-bottom: 10px;
 
   &:first-child {
-    margin-top: 20px;
+    margin-top: 10px;
   }
 }
 
