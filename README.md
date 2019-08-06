@@ -40,12 +40,14 @@ Features :
 
 ### Built With
 * [React](https://reactjs.org/)
+* [Axios](https://github.com/axios/axios)
+* [Glitch server](https://glitch.com/)
+* [JSON-server](https://github.com/typicode/json-server)
+* [Bulma](https://bulma.io)
+* [Netlify](https://netlify.com)
+* [React-bootstrap](https://react-bootstrap.github.io/)
 * [React-dom](https://www.npmjs.com/package/react-dom)
 * [React-router-dom](https://www.npmjs.com/package/react-router-dom)
-* [Axios](https://github.com/axios/axios)
-* [React-bootstrap](https://react-bootstrap.github.io/)
-* [bulma](https://bulma.io)
-* [glitch server](https://glitch.com/)
 
 
 <!-- GETTING STARTED -->
@@ -57,6 +59,48 @@ Features :
 
 <!-- USAGE EXAMPLES -->
 ## Usage
+
+#### DB structure of Product & Attribute(s)
+
+A `Product` data-structure contains such as ID, Title, Description, Category,user ID etc.
+
+```js
+{
+  "products": [{
+    "id": 13  //  PK
+    "userId": 1,
+    "productTitle": "...",
+    "productDesc": "...",
+    "category": "Accessories",
+    "imageURL": "",
+    "accSoldCnt": 0,
+  }]
+}
+```
+
+The structure of `Attribute` data that subordinated on corresponding product is as follows.
+
+```js
+{
+  "attributes": [{
+    "id": 2,  // PK
+    "productId": 13,  // FK
+    "userId": 1,
+    "attrSKU": "SKU 888888",
+    "size": 90,
+    "color": "Blue",
+    "quantity": 1,
+    "productUnitPrice": 16.99,
+    "productMarketPrice": 11.99,
+    "isSoldOut": true,
+    "isDefaultAttr": false
+  }]
+}
+```
+
+<a href="https://github.com/typicode/json-server" target="_blank">what's json-server?</a>
+
+
 
 #### Context; Handling functions
 
