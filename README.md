@@ -188,7 +188,7 @@ handleAttributeChangeAttrSKU = idx => evt => {
     value={attribute.attrSKU}
     onChange={this.handleAttributeChangeattrSKU(idx)}
   />
-)}
+))}
 ```
 
 <img src="https://drive.google.com/uc?export=view&id=1Q5Q1rZVWcYrWrsf-Vi1B215sPhcEUlA4" width="700px">
